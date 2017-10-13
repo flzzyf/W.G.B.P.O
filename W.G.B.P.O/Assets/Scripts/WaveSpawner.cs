@@ -41,7 +41,7 @@ public class WaveSpawner : MonoBehaviour {
 
 	IEnumerator SpawnWave()
 	{
-		Debug.Log ("spawn");
+		//Debug.Log ("spawn");
 
 		spawningWave = true;
 
@@ -51,7 +51,7 @@ public class WaveSpawner : MonoBehaviour {
 		{
 			for (int j = 0; j < currentWave.waveUnits[i].num; j++) 
 			{
-				Instantiate(currentWave.waveUnits[i].waveUnit, WayPointManager.wayPoints[0].position, Quaternion.identity);
+				GameObject unit = Instantiate(currentWave.waveUnits[i].waveUnit, WayPointManager.wayPoints[0].position, Quaternion.identity);
 				yield return new WaitForSeconds(currentWave.waveUnits[i].rate);
 
 			}

@@ -7,6 +7,7 @@ public class WaveUnits {
 
 	public GameObject waveUnit;
 	public int num = 1;
+    public float hp = 1;
 	public float rate = 1;
 
 }
