@@ -52,6 +52,8 @@ public class WaveSpawner : MonoBehaviour {
 			for (int j = 0; j < currentWave.waveUnits[i].num; j++) 
 			{
 				GameObject unit = Instantiate(currentWave.waveUnits[i].waveUnit, WayPointManager.wayPoints[0].position, Quaternion.identity);
+                unit.GetComponent<Unit>().SetHp(currentWave.waveUnits[i].hp);
+
 				yield return new WaitForSeconds(currentWave.waveUnits[i].rate);
 
 			}

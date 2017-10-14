@@ -44,30 +44,6 @@ public class Turret : MonoBehaviour {
 		Gizmos.DrawWireSphere(transform.position, range);
 	}
 
-    //鼠标悬浮
-    private void OnMouseOver()
-    {
-        animator.SetBool("Hover", true);
-        
-    }
-    //鼠标离开
-    private void OnMouseExit()
-    {
-        animator.SetBool("Hover", false);
-
-    }
-
-    //鼠标按下
-    private void OnMouseDown()
-    {
-        Attack();
-    }
-    //鼠标Up
-    private void OnMouseUp()
-    {
-        
-    }
-
     public void Attack()
     {
         GameObject fx = Instantiate(explode, transform.position, Quaternion.identity);

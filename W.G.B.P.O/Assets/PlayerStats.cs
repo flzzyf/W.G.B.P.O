@@ -2,27 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour {
+public class PlayerStats : MonoBehaviour {
 
-	public float speed = 3;
+    public int maxHp = 5;
+    int currentHp;
 
-    public int maxHp = 1;
-    int currentHp = 1;
+    public GameObject heart;
+    Renderer renderer;
 
     bool isDead = false;
 
-    Renderer renderer;
+    public static PlayerStats instance;
 
     private void Awake()
     {
-        renderer = GetComponent<Renderer>();
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    void Start ()
+    {
+        currentHp = maxHp;
+
+        renderer = heart.GetComponent<Renderer>();
+        AppearanceModify();
 
     }
 
-    private void Start()
+    //修改外形
+    public void AppearanceModify()
     {
-        AppearanceModify();
-
+        renderer.material.color = ColorManager.instance.GetColor(currentHp - 1);
     }
 
     public void TakeDamage(int _amount)
@@ -45,27 +57,10 @@ public class Unit : MonoBehaviour {
         }
     }
 
-    //设置HP
-    public void SetHp(int _amount)
-    {
-        currentHp = _amount;
-        AppearanceModify();
-    }
-
-    //修改外形
-    public void AppearanceModify()
-    {
-        renderer.material.color = ColorManager.instance.GetColor(currentHp - 1);
-    }
-
     void Death()
     {
-        Destroy(gameObject);
-    }
-
-    public int GetHp()
-    {
-        return currentHp;
+        //游戏失败
+        Destroy(heart);
     }
 
 }
