@@ -2053,7 +2053,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1524975892}
   - component: {fileID: 1524975891}
-  m_Layer: 0
+  - component: {fileID: 1524975894}
+  - component: {fileID: 1524975893}
+  m_Layer: 2
   m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2115,6 +2117,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1524975893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1524975890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0442f92eadf9c4a997ce06b3f87bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &1524975894
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1524975890}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3.61
 --- !u!1001 &1539213985
 Prefab:
   m_ObjectHideFlags: 0
@@ -2632,6 +2660,7 @@ GameObject:
   - component: {fileID: 1881212864}
   - component: {fileID: 1881212865}
   - component: {fileID: 1881212866}
+  - component: {fileID: 1881212867}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2733,6 +2762,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 5
   heart: {fileID: 1524975890}
+--- !u!114 &1881212867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1881212862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14a387c597ab59b4793836d0b56ce5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1914665566
 Prefab:
   m_ObjectHideFlags: 0
