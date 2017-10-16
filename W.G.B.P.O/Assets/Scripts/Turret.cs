@@ -5,6 +5,9 @@ using UnityEngine;
 public class Turret : MonoBehaviour {
 
 	public float range = 3;
+    public float fireRate = 1f;
+    private float fireCountdown = 0f;
+
 
     public GameObject explode;
 
@@ -35,9 +38,13 @@ public class Turret : MonoBehaviour {
         animator = GetComponent<Animator>();
 	}
 	
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        if (fireCountdown > 0)
+        {
+            fireCountdown -= Time.deltaTime;
+        }
+    }
 
     //选中显示范围
 	void OnDrawGizmosSelected(){
