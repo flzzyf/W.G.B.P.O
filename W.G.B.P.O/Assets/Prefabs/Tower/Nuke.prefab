@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 1.5
+  fireRate: 3
   explode: {fileID: 1986656991180130, guid: 51367a2fedd10eb46a6920c7a9d44156, type: 2}
 --- !u!212 &212814204005649352
 SpriteRenderer:

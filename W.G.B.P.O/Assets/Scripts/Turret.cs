@@ -5,6 +5,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour {
 
 	public float range = 3;
+
     public float fireRate = 1f;
     private float fireCountdown = 0f;
 
@@ -43,6 +44,8 @@ public class Turret : MonoBehaviour {
         if (fireCountdown > 0)
         {
             fireCountdown -= Time.deltaTime;
+
+			//Debug.Log (fireCountdown);
         }
     }
 
@@ -53,6 +56,12 @@ public class Turret : MonoBehaviour {
 
     public void Attack()
     {
+		if(fireCountdown > 0){
+			return;
+		}
+
+		fireCountdown = fireRate;
+
         GameObject fx = Instantiate(explode, transform.position, Quaternion.identity);
         Destroy(fx, 0.5f);
 
