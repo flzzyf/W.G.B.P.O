@@ -9,7 +9,6 @@ public class Turret : MonoBehaviour {
     public float fireRate = 1f;
     private float fireCountdown = 0f;
 
-
     public GameObject explode;
 
 	CircleCollider2D collider;
@@ -45,7 +44,12 @@ public class Turret : MonoBehaviour {
         {
             fireCountdown -= Time.deltaTime;
 
-			//Debug.Log (fireCountdown);
+            //Debug.Log (fireCountdown);
+        }
+        else
+        {
+            animator.SetBool("Reloading", false);
+
         }
     }
 
@@ -59,6 +63,8 @@ public class Turret : MonoBehaviour {
 		if(fireCountdown > 0){
 			return;
 		}
+
+        animator.SetBool("Reloading", true);
 
 		fireCountdown = fireRate;
 

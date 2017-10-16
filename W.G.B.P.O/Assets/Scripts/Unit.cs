@@ -13,6 +13,8 @@ public class Unit : MonoBehaviour {
 
     Renderer renderer;
 
+    Animator animator;
+
     private void Awake()
     {
         renderer = GetComponent<Renderer>();
@@ -23,12 +25,15 @@ public class Unit : MonoBehaviour {
     {
         AppearanceModify();
 
+        animator = GetComponent<Animator>();
+
     }
 
     public void TakeDamage(int _amount)
     {
         if (!isDead)
         {
+            animator.Play("Enemy_Hit");
             //还没死
             currentHp -= _amount;
             //Debug.Log(currentHp);
