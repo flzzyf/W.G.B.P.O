@@ -11,6 +11,8 @@ public class Turret : MonoBehaviour {
 
     public GameObject explode;
 
+    public GameObject reloadPicture;
+
 	CircleCollider2D collider;
 
     Animator animator;
@@ -44,6 +46,9 @@ public class Turret : MonoBehaviour {
         {
             fireCountdown -= Time.deltaTime;
 
+            //Vector3 scale = reloadPicture.transform.localScale;
+            Vector3 scale = new Vector3(1, fireCountdown / fireRate, 1);
+            reloadPicture.transform.localScale = scale;
             //Debug.Log (fireCountdown);
         }
         else
