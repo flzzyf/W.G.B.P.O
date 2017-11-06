@@ -6,7 +6,7 @@ public class GameSpeedManager : MonoBehaviour {
 
     public static bool isPause = false;
     public static bool isSpeedUp = false;
-    public static bool isSlowDown = false;
+    //public static bool isSlowDown = false;
 
     private void Update()
     {

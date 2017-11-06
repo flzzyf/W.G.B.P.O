@@ -13,6 +13,11 @@ public class GameUI : MonoBehaviour {
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        GameSpeedManager.isPause = false;
+
+        GameSpeedManager.BackToNormal();
+
     }
 
     public void Exit()
@@ -29,7 +34,7 @@ public class GameUI : MonoBehaviour {
 
             pauseText.text = "暂停";
 
-            GameSpeedManager.SetTimeScale(1);
+            GameSpeedManager.BackToNormal();
 
         }
         else
