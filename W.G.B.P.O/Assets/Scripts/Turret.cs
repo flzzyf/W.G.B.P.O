@@ -17,7 +17,7 @@ public class Turret : MonoBehaviour {
 
     Animator animator;
 
-    AudioSource audio;
+    public AudioClip nuke;
 
     List<GameObject> targetList = new List<GameObject>();
 
@@ -40,8 +40,6 @@ public class Turret : MonoBehaviour {
 		collider.radius = range;
 
         animator = GetComponent<Animator>();
-
-        audio = GetComponent<AudioSource>();
 	}
 	
 	void Update ()
@@ -84,7 +82,8 @@ public class Turret : MonoBehaviour {
 
         targets = targetList.ToArray();
 
-        audio.Play();
+        //播放音效
+        SoundManager.instance.PlaySound(nuke);
 
         foreach (GameObject target in targets)
         {

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Node : MonoBehaviour {
 
-    public GameObject turretToBuild;
-
     GameObject turret;
     Animator animator;
 
@@ -26,7 +24,19 @@ public class Node : MonoBehaviour {
         }
         else
         {
+            //无炮塔
+
             animator.SetBool("Hover", true);
+
+
+            if (GameManager.instance.draging)
+            {
+
+            }
+            else
+            {
+
+            }
 
         }
 
@@ -47,26 +57,61 @@ public class Node : MonoBehaviour {
 
     }
 
+    bool HasTurret()
+    {
+        return turret == true;
+    }
+
+    private void OnMouseDown()
+    {
+        if (HasTurret())
+        {
+            //已有炮塔
+            GameManager.instance.draging = true;
+
+        }
+
+
+    }
+
     private void OnMouseUp()
     {
-        if(HasTurret())
+        GameManager.instance.draging = false;
+
+        if (HasTurret())
         {
             //已有炮塔
             turret.GetComponent<Turret>().Attack();
 
         }
-        else
-        {
-            //未建造炮塔
-            turret = Instantiate(turretToBuild, transform.position, Quaternion.identity, transform);
-            animator.SetBool("Hover", false);
-
-        }
 
     }
 
-    bool HasTurret()
+    private void OnMouseDrag()
     {
-        return turret == true;
+        if (HasTurret())
+        {
+            //已有炮塔
+
+            //获取鼠标位置点
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Vector3 mousePoint = ray.origin;
+            //移动炮台到鼠标
+            turret.transform.position = mousePoint;
+        }
+        else
+        {
+            //无炮塔
+
+        }
+
+
+
+    }
+
+    public void BuildTurret(GameObject _turret)
+    {
+        turret = Instantiate(_turret, transform.position, Quaternion.identity, transform);
+
     }
 }
