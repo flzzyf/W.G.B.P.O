@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Unit_Movement : MonoBehaviour {
 
-	int currentWayPointIndex = 0;
+    public float rotSpeed = 3;
+
+    int currentWayPointIndex = 0;
 	Vector3 targetWayPoint;
 	Unit unit;
 
@@ -19,18 +21,29 @@ public class Unit_Movement : MonoBehaviour {
 		//朝下个点移动
 		Vector3 dir = targetWayPoint - transform.position;
 
-		transform.Translate(dir.normalized * unit.speed * Time.deltaTime, Space.World);
+        //移动
+        transform.Translate(dir.normalized * unit.speed * Time.deltaTime, Space.World);
 
+        //旋转
+        if (dir != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
-		if(dir.magnitude <= unit.speed * Time.deltaTime)
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotSpeed * Time.deltaTime);
+
+        }
+        //抵达
+        if (dir.magnitude <= unit.speed * Time.deltaTime)
 		{
 			ReachTarget();
 		}
+        
 
-	}
+    }
 
-	//获取下个路径点
-	void GetNextWayPoint()
+    //获取下个路径点
+    void GetNextWayPoint()
 	{
 		targetWayPoint = WayPointManager.wayPoints[currentWayPointIndex].position;
 	}

@@ -16,11 +16,6 @@ public class Node : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
-
     //鼠标悬浮
     private void OnMouseOver()
     {
@@ -52,7 +47,7 @@ public class Node : MonoBehaviour {
 
     }
 
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
         if(HasTurret())
         {

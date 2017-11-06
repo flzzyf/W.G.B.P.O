@@ -9,6 +9,8 @@ public class Unit : MonoBehaviour {
     public int maxHp = 1;
     int currentHp = 1;
 
+    public GameObject GFX;
+
     bool isDead = false;
 
     Renderer renderer;
@@ -17,15 +19,18 @@ public class Unit : MonoBehaviour {
 
     private void Awake()
     {
-        renderer = GetComponent<Renderer>();
+        renderer = GFX.GetComponent<Renderer>();
 
     }
 
     private void Start()
     {
+        currentHp = maxHp;
+
         AppearanceModify();
 
         animator = GetComponent<Animator>();
+
 
     }
 

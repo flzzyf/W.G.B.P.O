@@ -17,6 +17,8 @@ public class Turret : MonoBehaviour {
 
     Animator animator;
 
+    AudioSource audio;
+
     List<GameObject> targetList = new List<GameObject>();
 
     #region 用Collider获取可攻击目标列表
@@ -38,6 +40,8 @@ public class Turret : MonoBehaviour {
 		collider.radius = range;
 
         animator = GetComponent<Animator>();
+
+        audio = GetComponent<AudioSource>();
 	}
 	
 	void Update ()
@@ -79,6 +83,8 @@ public class Turret : MonoBehaviour {
         GameObject[] targets = new GameObject[targetList.Count];
 
         targets = targetList.ToArray();
+
+        audio.Play();
 
         foreach (GameObject target in targets)
         {
