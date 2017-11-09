@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 95586548636967140}
   m_Layer: 0
   m_Name: Node
-  m_TagString: Untagged
+  m_TagString: Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,8 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf04dd4a96bcf14790c82c2f21cb22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretToBuild: {fileID: 1407301610418910, guid: 365739132acb847d3bdde25ddaa3df1e,
-    type: 2}
 --- !u!212 &212696587178501126
 SpriteRenderer:
   m_ObjectHideFlags: 1

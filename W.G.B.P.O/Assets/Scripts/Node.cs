@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Node : MonoBehaviour {
 
-    GameObject turret;
+    public GameObject turret;
     Animator animator;
-
 
     void Start ()
     {
@@ -17,20 +16,33 @@ public class Node : MonoBehaviour {
     //鼠标悬浮
     private void OnMouseOver()
     {
+        animator.SetBool("Hover", true);
+
         if (HasTurret())
         {
             //已有炮塔
-            turret.GetComponent<Animator>().SetBool("Hover", true);
+            //turret.GetComponent<Animator>().SetBool("Hover", true);
         }
         else
         {
             //无炮塔
 
-            animator.SetBool("Hover", true);
 
 
             if (GameManager.instance.draging)
             {
+                //移动炮塔到新节点
+                GameManager.instance.dragingNode.GetComponent<Node>().turret.transform.position = transform.position;
+
+                turret = GameManager.instance.dragingNode.GetComponent<Node>().turret;
+
+
+                GameManager.instance.dragingNode.GetComponent<Node>().ClearTurret();
+
+
+                GameManager.instance.dragingNode = gameObject;
+
+                turret.transform.SetParent(transform);
 
             }
             else
@@ -44,6 +56,9 @@ public class Node : MonoBehaviour {
     //鼠标离开
     private void OnMouseExit()
     {
+        animator.SetBool("Hover", false);
+
+
         if (HasTurret())
         {
             //已有炮塔
@@ -51,7 +66,6 @@ public class Node : MonoBehaviour {
         }
         else
         {
-            animator.SetBool("Hover", false);
 
         }
 
@@ -69,6 +83,8 @@ public class Node : MonoBehaviour {
             //已有炮塔
             GameManager.instance.draging = true;
 
+            GameManager.instance.dragingNode = gameObject;
+
         }
 
 
@@ -76,7 +92,10 @@ public class Node : MonoBehaviour {
 
     private void OnMouseUp()
     {
-        GameManager.instance.draging = false;
+        if(GameManager.instance.draging)
+        {
+            GameManager.instance.draging = false;
+        }
 
         if (HasTurret())
         {
@@ -87,31 +106,14 @@ public class Node : MonoBehaviour {
 
     }
 
-    private void OnMouseDrag()
-    {
-        if (HasTurret())
-        {
-            //已有炮塔
-
-            //获取鼠标位置点
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Vector3 mousePoint = ray.origin;
-            //移动炮台到鼠标
-            turret.transform.position = mousePoint;
-        }
-        else
-        {
-            //无炮塔
-
-        }
-
-
-
-    }
-
     public void BuildTurret(GameObject _turret)
     {
         turret = Instantiate(_turret, transform.position, Quaternion.identity, transform);
 
+    }
+
+    public void ClearTurret()
+    {
+        turret = null;
     }
 }

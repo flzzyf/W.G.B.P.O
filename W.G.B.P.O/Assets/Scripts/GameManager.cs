@@ -27,21 +27,39 @@ public class GameManager : MonoBehaviour {
     [HideInInspector]
     public bool draging = false;
 
+    public GameObject dragingNode;
+
     public GameObject[] turrets;
+
+    public GameObject[] nodes;
 
     private void Start()
     {
-        BuildTurret(startNode);
+        //BuildTurret(startNode);
+
+        nodes = GameObject.FindGameObjectsWithTag("Node");
+
+        RandomBuildTurret();
+
     }
 
     public void BuildTurret(GameObject _node)
     {
         Node node = _node.GetComponent<Node>();
 
-        int a = Random.Range(0, turrets.Length);
+        int t = Random.Range(0, turrets.Length);
 
-        node.BuildTurret(turrets[a]);
+        node.BuildTurret(turrets[t]);
 
+    }
+
+    public void RandomBuildTurret()
+    {
+        int n = Random.Range(0, nodes.Length);
+
+        int t = Random.Range(0, turrets.Length);
+
+        nodes[n].GetComponent<Node>().BuildTurret(turrets[t]);
     }
 
 }
