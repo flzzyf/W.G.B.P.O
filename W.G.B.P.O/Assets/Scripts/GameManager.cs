@@ -27,11 +27,14 @@ public class GameManager : MonoBehaviour {
     [HideInInspector]
     public bool draging = false;
 
+    [HideInInspector]
     public GameObject dragingNode;
 
     public GameObject[] turrets;
 
-    public GameObject[] nodes;
+    GameObject[] nodes;
+
+    public GameObject textCanvasPrefab;
 
     private void Start()
     {
@@ -40,6 +43,8 @@ public class GameManager : MonoBehaviour {
         nodes = GameObject.FindGameObjectsWithTag("Node");
 
         RandomBuildTurret();
+
+        CreateFloatingText(Vector2.zero, "qwe");
 
     }
 
@@ -61,5 +66,28 @@ public class GameManager : MonoBehaviour {
 
         nodes[n].GetComponent<Node>().BuildTurret(turrets[t]);
     }
+
+    GameObject GetIdleNodes()
+    {
+        GameObject[] nodesTemp = (GameObject[])nodes.Clone();
+
+        foreach (GameObject item in nodesTemp)
+        {
+            if(item.GetComponent<Node>().turret != null)
+            {
+                
+            }
+        }
+    }
+
+
+    public void CreateFloatingText(Vector2 _pos, string _text)
+    {
+        GameObject text = Instantiate(textCanvasPrefab, _pos, Quaternion.identity);
+
+        text.GetComponent<FloatingText>().SetText((_text));
+
+    }
+
 
 }

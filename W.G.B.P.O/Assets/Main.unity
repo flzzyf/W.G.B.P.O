@@ -3882,8 +3882,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNode: {fileID: 424335707}
   draging: 0
+  dragingNode: {fileID: 0}
   turrets:
   - {fileID: 1407301610418910, guid: 365739132acb847d3bdde25ddaa3df1e, type: 2}
+  nodes: []
+  textCanvasPrefab: {fileID: 1292875534094796, guid: 1dac9aa3cbc284ec2be56da5603b9faa,
+    type: 2}
 --- !u!1001 &1914665566
 Prefab:
   m_ObjectHideFlags: 0
