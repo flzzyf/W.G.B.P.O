@@ -25,7 +25,8 @@ public class EndPoint : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        targetList.Add(collision.gameObject);
+        if(collision.gameObject.tag == "Enemy")
+            targetList.Add(collision.gameObject);
 
     }
 
