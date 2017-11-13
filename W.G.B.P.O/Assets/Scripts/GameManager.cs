@@ -79,15 +79,11 @@ public class GameManager : MonoBehaviour {
         {
             if(item.GetComponent<Node>().turret != null)
             {
-                
+                nodesTemp.Remove(item);
+
             }
         }
     
-                //nodesTemp.
-                //nodesTemp.Remove(item);
-            
-
-
         return nodesTemp.ToArray();
 }
 
