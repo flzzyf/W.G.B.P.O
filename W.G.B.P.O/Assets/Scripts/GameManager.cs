@@ -69,13 +69,14 @@ public class GameManager : MonoBehaviour {
 
     GameObject GetIdleNodes()
     {
-        GameObject[] nodesTemp = (GameObject[])nodes.Clone();
+        GameObject[] nodesTemp = new GameObject[nodes.Length];
+        //GameObject[] nodesTemp = (GameObject[])nodes.Clone();
 
         foreach (GameObject item in nodesTemp)
         {
             if(item.GetComponent<Node>().turret != null)
             {
-                
+                nodesTemp.
             }
         }
     }
