@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
         nodes[n].GetComponent<Node>().BuildTurret(turrets[t]);
     }
 
-    GameObject GetIdleNodes()
+/*    GameObject GetIdleNodes()
     {
         GameObject[] nodesTemp = new GameObject[nodes.Length];
         //GameObject[] nodesTemp = (GameObject[])nodes.Clone();
@@ -76,10 +76,10 @@ public class GameManager : MonoBehaviour {
         {
             if(item.GetComponent<Node>().turret != null)
             {
-                nodesTemp.
+                
             }
         }
-    }
+    }*/
 
 
     public void CreateFloatingText(Vector2 _pos, string _text)
