@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour {
         CreateFloatingText(Vector2.zero, "qwe");
 
     }
-
+    //在一个节点造炮塔
     public void BuildTurret(GameObject _node)
     {
         Node node = _node.GetComponent<Node>();
@@ -57,31 +57,46 @@ public class GameManager : MonoBehaviour {
         node.BuildTurret(turrets[t]);
 
     }
-
+    //随机在一个闲置节点造炮塔
     public void RandomBuildTurret()
     {
-        int n = Random.Range(0, nodes.Length);
+        GameObject[] idleNodes = GetIdleNodes();
+
+        int n = Random.Range(0, idleNodes.Length);
 
         int t = Random.Range(0, turrets.Length);
 
-        nodes[n].GetComponent<Node>().BuildTurret(turrets[t]);
+        idleNodes[n].GetComponent<Node>().BuildTurret(turrets[t]);
     }
 
-    GameObject GetIdleNodes()
+    //获取未建设炮塔的节点组
+    GameObject[] GetIdleNodes()
     {
+<<<<<<< HEAD
         GameObject[] nodesTemp = new GameObject[nodes.Length];
         //GameObject[] nodesTemp = (GameObject[])nodes.Clone();
+=======
+        //GameObject[] nodesTemp = (GameObject[])nodes.Clone();
+
+        List<GameObject> nodesTemp = new List<GameObject>(nodes);
+>>>>>>> 46ec8759aa8c7ab464b80f157795ad960773a8e0
 
         foreach (GameObject item in nodesTemp)
         {
             if(item.GetComponent<Node>().turret != null)
             {
+<<<<<<< HEAD
                 nodesTemp.
+=======
+                nodesTemp.Remove(item);
+>>>>>>> 46ec8759aa8c7ab464b80f157795ad960773a8e0
             }
         }
+
+        return nodesTemp.ToArray();
     }
 
-
+    //创建浮动文字
     public void CreateFloatingText(Vector2 _pos, string _text)
     {
         GameObject text = Instantiate(textCanvasPrefab, _pos, Quaternion.identity);
