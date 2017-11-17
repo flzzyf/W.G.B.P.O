@@ -20,15 +20,30 @@ public class Turret : MonoBehaviour {
 
     public AudioClip sound_Launch;
 
-    [HideInInspector]
-    public GameObject parentNode;
+    Vector3 dragOffset;
+    bool dragingNoAttacking = false;
+
+    Vector3 parentPos;
+
+    public LayerMask ignoreLayer;
+
+    LayerMask defaultLayer;
 
     protected void Init () 
 	{
         animator = GetComponent<Animator>();
-	}
-	
-	protected void Update ()
+
+        parentPos = transform.parent.position;
+        parentPos.z = 0;
+        Debug.Log(parentPos);
+
+        defaultLayer = gameObject.layer;
+
+        Debug.Log(defaultLayer.ToString());
+
+    }
+
+    protected void Update ()
     {
         if (fireCountdown > 0)
         {
@@ -79,28 +94,52 @@ public class Turret : MonoBehaviour {
 
         GameManager.instance.dragingTurret = gameObject;
 
+        dragOffset = GetMousePos() - transform.position;
+        dragOffset.z = 0;
+
+        gameObject.layer = ignoreLayer;
+
+
+
     }
     //鼠标起来
     private void OnMouseUp()
     {
-        if (GameManager.instance.draging)
-        {
-            GameManager.instance.draging = false;
-        }else
+        GameManager.instance.draging = false;
+
+        if(!dragingNoAttacking)
         {
             //可攻击
             if (canAttack())
                 Attack();
         }
 
+        dragingNoAttacking = false;
 
+
+        //gameObject.layer = LayerMask.NameToLayer("Default");
 
     }
 
-    private void OnMouseOver()
+    private void OnMouseDrag()
     {
-        
-    }
+        Vector3 pos = GetMousePos() - dragOffset;
+        transform.position = pos;
 
+        if(Vector3.Distance(pos, parentPos) > 0.3)
+        {
+            //Debug.Log(pos);
+            //Debug.Log(transform.parent.position);
+            dragingNoAttacking = true;
+        }
+    }
+    //获取鼠标位置
+    Vector3 GetMousePos()
+    {
+        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        pos.z = 0;
+
+        return pos;
+    }
 
 }

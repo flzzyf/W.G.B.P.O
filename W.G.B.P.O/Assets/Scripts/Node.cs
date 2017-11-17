@@ -29,15 +29,13 @@ public class Node : MonoBehaviour {
             if (GameManager.instance.draging)
             {
                 //移动炮塔到新节点
-                GameManager.instance.dragingTurret.GetComponent<Node>().turret.transform.position = transform.position;
+                GameManager.instance.dragingTurret.transform.position = transform.position;
 
                 turret = GameManager.instance.dragingTurret;
 
+                //GameManager.instance.dragingTurret.GetComponent<Turret>().ClearTurret();
 
-                GameManager.instance.dragingTurret.GetComponent<Node>().ClearTurret();
-
-
-                GameManager.instance.dragingTurret = gameObject;
+                //GameManager.instance.dragingTurret = gameObject;
 
                 turret.transform.SetParent(transform);
 
