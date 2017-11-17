@@ -26,27 +26,20 @@ public class Node : MonoBehaviour {
         else
         {
             //无炮塔
-
-
-
             if (GameManager.instance.draging)
             {
                 //移动炮塔到新节点
-                GameManager.instance.dragingNode.GetComponent<Node>().turret.transform.position = transform.position;
+                GameManager.instance.dragingTurret.GetComponent<Node>().turret.transform.position = transform.position;
 
-                turret = GameManager.instance.dragingNode.GetComponent<Node>().turret;
-
-
-                GameManager.instance.dragingNode.GetComponent<Node>().ClearTurret();
+                turret = GameManager.instance.dragingTurret;
 
 
-                GameManager.instance.dragingNode = gameObject;
+                GameManager.instance.dragingTurret.GetComponent<Node>().ClearTurret();
+
+
+                GameManager.instance.dragingTurret = gameObject;
 
                 turret.transform.SetParent(transform);
-
-            }
-            else
-            {
 
             }
 
@@ -74,36 +67,6 @@ public class Node : MonoBehaviour {
     bool HasTurret()
     {
         return turret == true;
-    }
-
-    private void OnMouseDown()
-    {
-        if (HasTurret())
-        {
-            //已有炮塔
-            GameManager.instance.draging = true;
-
-            GameManager.instance.dragingNode = gameObject;
-
-        }
-
-
-    }
-
-    private void OnMouseUp()
-    {
-        if(GameManager.instance.draging)
-        {
-            GameManager.instance.draging = false;
-        }
-
-        if (HasTurret())
-        {
-            //已有炮塔
-            turret.GetComponent<Turret>().Attack();
-
-        }
-
     }
 
     public void BuildTurret(GameObject _turret)

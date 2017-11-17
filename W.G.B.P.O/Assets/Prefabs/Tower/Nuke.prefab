@@ -54,9 +54,8 @@ GameObject:
   - component: {fileID: 212814204005649352}
   - component: {fileID: 58486441548023714}
   - component: {fileID: 95480771004387696}
-  - component: {fileID: 114531146897184632}
-  - component: {fileID: 82726283098450814}
-  m_Layer: 2
+  - component: {fileID: 114893842483000154}
+  m_Layer: 0
   m_Name: Nuke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,86 +118,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2857143
---- !u!82 &82726283098450814
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1407301610418910}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2f6c5897dde10fa40ae7601d70f267af, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.216
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!95 &95480771004387696
 Animator:
   serializedVersion: 3
@@ -216,7 +135,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114531146897184632
+--- !u!114 &114893842483000154
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -224,14 +143,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1407301610418910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e162705e0bb2e4f04bc6f31955c0e522, type: 3}
+  m_Script: {fileID: 11500000, guid: 20b32ecdfd0a94abeb83b62cdf4fc0da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   range: 1.5
   fireRate: 3
-  explode: {fileID: 1986656991180130, guid: 51367a2fedd10eb46a6920c7a9d44156, type: 2}
   reloadPicture: {fileID: 1264687629150226}
-  nuke: {fileID: 0}
+  roundDamage: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  sound_Launch: {fileID: 8300000, guid: 2f6c5897dde10fa40ae7601d70f267af, type: 3}
+  effect_Launch: {fileID: 1986656991180130, guid: 51367a2fedd10eb46a6920c7a9d44156,
+    type: 2}
 --- !u!212 &212040726475733722
 SpriteRenderer:
   m_ObjectHideFlags: 1

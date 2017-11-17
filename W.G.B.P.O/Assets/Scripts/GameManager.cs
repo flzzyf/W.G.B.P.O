@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     public bool draging = false;
 
     [HideInInspector]
-    public GameObject dragingNode;
+    public GameObject dragingTurret;
 
     public GameObject[] turrets;
 
