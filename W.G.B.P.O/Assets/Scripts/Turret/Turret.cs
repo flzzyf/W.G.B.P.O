@@ -34,12 +34,12 @@ public class Turret : MonoBehaviour {
         animator = GetComponent<Animator>();
 
         parentPos = transform.parent.position;
-        parentPos.z = 0;
+        //parentPos.z = 0;
         Debug.Log(parentPos);
 
         defaultLayer = gameObject.layer;
 
-        Debug.Log(defaultLayer.ToString());
+        //Debug.Log(defaultLayer.ToString());
 
     }
 
@@ -62,7 +62,7 @@ public class Turret : MonoBehaviour {
     //选中显示范围
 	void OnDrawGizmosSelected(){
 		Gizmos.DrawWireSphere(transform.position, range);
-	}
+    }
 
     public virtual void Attack()
     {
