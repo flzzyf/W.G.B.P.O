@@ -16,7 +16,6 @@ public class Node : MonoBehaviour {
     //鼠标悬浮
     private void OnMouseOver()
     {
-        animator.SetBool("Hover", true);
 
         if (HasTurret())
         {
@@ -25,18 +24,17 @@ public class Node : MonoBehaviour {
         }
         else
         {
+            animator.SetBool("Hover", true);
+
+
             //无炮塔
             if (GameManager.instance.draging)
             {
-                //移动炮塔到新节点
-                GameManager.instance.dragingTurret.transform.position = transform.position;
 
                 turret = GameManager.instance.dragingTurret;
-
-                //GameManager.instance.dragingTurret.GetComponent<Turret>().ClearTurret();
-
-                //GameManager.instance.dragingTurret = gameObject;
-
+                //前任父级节点清除炮塔链接
+                turret.transform.parent.GetComponent<Node>().ClearTurret();
+                //设置炮塔新的父级节点
                 turret.transform.SetParent(transform);
 
             }
@@ -53,7 +51,7 @@ public class Node : MonoBehaviour {
         if (HasTurret())
         {
             //已有炮塔
-            turret.GetComponent<Animator>().SetBool("Hover", false);
+            //turret.GetComponent<Animator>().SetBool("Hover", false);
         }
         else
         {

@@ -13,33 +13,29 @@ public class Turret : MonoBehaviour {
 
     Animator animator;
 
-    [HideInInspector]
-    public int roundDamage = 0;
+    //回合造成伤害
+    protected int roundDamage = 0;
 
     public LayerMask enemyLayer;
 
-    public AudioClip sound_Launch;
+    public SoundEffect sound_Launch;
 
     Vector3 dragOffset;
     bool dragingNoAttacking = false;
-
-    Vector3 parentPos;
 
     public LayerMask ignoreLayer;
 
     LayerMask defaultLayer;
 
+    protected static string enemyTag = "Enemy";
+
+    public GameObject gfx;
+
     protected void Init () 
 	{
-        animator = GetComponent<Animator>();
-
-        parentPos = transform.parent.position;
-        //parentPos.z = 0;
-        Debug.Log(parentPos);
+        animator = gfx.GetComponent<Animator>();
 
         defaultLayer = gameObject.layer;
-
-        //Debug.Log(defaultLayer.ToString());
 
     }
 
@@ -76,13 +72,6 @@ public class Turret : MonoBehaviour {
 
     }
 
-    protected Collider2D[] GetTarget()
-    {
-        Collider2D[] target = Physics2D.OverlapCircleAll(transform.position, range, enemyLayer);
-
-        return target;
-    }
-
     bool canAttack(){
         return fireCountdown <= 0;
     }
@@ -97,7 +86,6 @@ public class Turret : MonoBehaviour {
         dragOffset = GetMousePos() - transform.position;
         dragOffset.z = 0;
 
-        gameObject.layer = ignoreLayer;
 
 
 
@@ -116,20 +104,24 @@ public class Turret : MonoBehaviour {
 
         dragingNoAttacking = false;
 
+        gameObject.layer = defaultLayer;
 
-        //gameObject.layer = LayerMask.NameToLayer("Default");
+        transform.position = transform.parent.position;
 
     }
-
+    //鼠标拖动
     private void OnMouseDrag()
     {
         Vector3 pos = GetMousePos() - dragOffset;
         transform.position = pos;
 
+        Vector3 parentPos = transform.parent.position;
+        parentPos.z = 0;
+
         if(Vector3.Distance(pos, parentPos) > 0.3)
         {
-            //Debug.Log(pos);
-            //Debug.Log(transform.parent.position);
+            gameObject.layer = ignoreLayer;
+
             dragingNoAttacking = true;
         }
     }
@@ -140,6 +132,11 @@ public class Turret : MonoBehaviour {
         pos.z = 0;
 
         return pos;
+    }
+
+    public void ClearRoundDamage()
+    {
+        roundDamage = 0;
     }
 
 }

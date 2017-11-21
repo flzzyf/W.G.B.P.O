@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EndPoint : MonoBehaviour {
 
-    List<GameObject> targetList = new List<GameObject>();
+    protected static string enemyTag = "Enemy";
+
+    public float range = 3f;
 
     private void Update()
     {
         if(!GameSpeedManager.isPause && !GameSpeedManager.isSpeedUp)
         {
-            if(targetList.Count > 0)
+            if(GetTargets().Count > 0)
             {
                 GameSpeedManager.SetTimeScale(0.4f);
 
@@ -23,17 +25,33 @@ public class EndPoint : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnDestroy()
     {
-        if(collision.gameObject.tag == "Enemy")
-            targetList.Add(collision.gameObject);
+        GameSpeedManager.BackToNormal();
 
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    List<GameObject> GetTargets()
     {
-        targetList.Remove(collision.gameObject);
+        List<GameObject> targets = new List<GameObject>();
 
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, range);
+
+        foreach (var item in cols)
+        {
+            if (item.gameObject.tag == enemyTag)
+            {
+                targets.Add(item.gameObject);
+            }
+        }
+
+        return targets;
+    }
+
+    //选中显示范围
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 
 }

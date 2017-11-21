@@ -8,8 +8,6 @@ public class GameUI : MonoBehaviour {
 
     public Text pauseText;
 
-    public Button speedUpButton;
-
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

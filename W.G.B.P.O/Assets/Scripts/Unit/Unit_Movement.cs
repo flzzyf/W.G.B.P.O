@@ -58,6 +58,8 @@ public class Unit_Movement : MonoBehaviour {
 			//抵达终点
 			Destroy(gameObject);
             PlayerStats.instance.TakeDamage(unit.GetHp());
+
+            GameManager.instance.EnemyReachTarget();
 		}
 		else
 		{

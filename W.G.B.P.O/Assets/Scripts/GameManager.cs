@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour {
 
     public GameObject textCanvasPrefab;
 
+    public SoundEffect enemyReachSound;
+
     private void Start()
     {
         //BuildTurret(startNode);
@@ -96,5 +98,10 @@ public class GameManager : MonoBehaviour {
 
     }
 
+    public void EnemyReachTarget()
+    {
+        SoundManager.instance.PlaySound(enemyReachSound);
+
+    }
 
 }

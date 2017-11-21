@@ -31,22 +31,19 @@ public class SoundManager : MonoBehaviour {
     {
         audioSource = GetComponent<AudioSource>();
 	}
-
-    public void PlaySound(AudioClip _clip)
+    //播放音效
+    public void PlaySound(SoundEffect _sound, bool _randomPitch = true)
     {
+        if (_randomPitch)
+        {
+            float randomPitch = Random.Range(lowPitchRange, highPitchRange);
 
-        audioSource.PlayOneShot(_clip);
+            audioSource.pitch = randomPitch;
+        }
+
+        audioSource.PlayOneShot(_sound.clip, _sound.volume);
+
+        audioSource.pitch = 1;
     }
-
-    public void PlaySoundRandomPitch(AudioClip _clip)
-    {
-        float randomPitch = Random.Range(lowPitchRange, highPitchRange);
-
-        audioSource.pitch = randomPitch;
-
-        audioSource.PlayOneShot(_clip);
-
-    }
-
 
 }
