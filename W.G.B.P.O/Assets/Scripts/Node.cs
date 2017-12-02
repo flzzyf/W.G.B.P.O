@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Node : MonoBehaviour {
 
+    [HideInInspector]
     public GameObject turret;
     Animator animator;
 
+    public GameObject gfx;
+
     void Start ()
     {
-        animator = GetComponent<Animator>();
+        animator = gfx.GetComponent<Animator>();
 
     }
 
     //鼠标悬浮
-    private void OnMouseOver()
+    private void OnMouseEnter()
     {
 
         if (HasTurret())

@@ -35,6 +35,7 @@ public class HomingMissile : MonoBehaviour {
     {
         if(collision.transform == target)
         {
+            collision.gameObject.GetComponent<Unit>().TakeDamage(1);
             Destroy(gameObject);
         }
     }

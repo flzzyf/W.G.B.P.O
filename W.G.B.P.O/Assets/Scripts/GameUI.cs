@@ -8,6 +8,8 @@ public class GameUI : MonoBehaviour {
 
     public Text pauseText;
 
+    public GameObject pausePanel;
+
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -34,6 +36,9 @@ public class GameUI : MonoBehaviour {
 
             GameSpeedManager.BackToNormal();
 
+            pausePanel.SetActive(false);
+
+
         }
         else
         {
@@ -43,6 +48,8 @@ public class GameUI : MonoBehaviour {
             pauseText.text = "继续";
 
             GameSpeedManager.SetTimeScale(0);
+
+            pausePanel.SetActive(true);
 
         }
     }

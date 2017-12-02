@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour {
 
     public SoundEffect enemyReachSound;
 
+    public bool gaming = false;
+
     private void Start()
     {
         //BuildTurret(startNode);
@@ -47,6 +49,8 @@ public class GameManager : MonoBehaviour {
         RandomBuildTurret();
 
         CreateFloatingText(Vector2.zero, "qwe");
+
+        gaming = true;
 
     }
     //在一个节点造炮塔
@@ -67,6 +71,8 @@ public class GameManager : MonoBehaviour {
         int n = Random.Range(0, idleNodes.Length);
 
         int t = Random.Range(0, turrets.Length);
+        
+        t = 0;
 
         idleNodes[n].GetComponent<Node>().BuildTurret(turrets[t]);
     }
@@ -101,6 +107,11 @@ public class GameManager : MonoBehaviour {
     public void EnemyReachTarget()
     {
         SoundManager.instance.PlaySound(enemyReachSound);
+
+    }
+
+    void TurnStart()
+    {
 
     }
 

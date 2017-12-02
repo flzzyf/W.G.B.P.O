@@ -16,8 +16,6 @@ public class Turret : MonoBehaviour {
     //回合造成伤害
     protected int roundDamage = 0;
 
-    public LayerMask enemyLayer;
-
     public SoundEffect sound_Launch;
 
     Vector3 dragOffset;
@@ -34,7 +32,7 @@ public class Turret : MonoBehaviour {
     protected void Init () 
 	{
         animator = gfx.GetComponent<Animator>();
-
+        
         defaultLayer = gameObject.layer;
 
     }

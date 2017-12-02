@@ -2,33 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret_Nuke : Turret {
+public class Turret_Bee : Turret {
 
-    public GameObject effect_Launch;
+    public GameObject missilePrefab;
 
-    public GameObject rangeDisplay;
-
-    void Start () {
+    void Start()
+    {
         Init();
-	}
-	
-	void Update () {
+    }
+
+    void Update()
+    {
         base.Update();
-	}
+    }
 
     public override void Attack()
     {
         base.Attack();
 
-        //创建特效
-        GameObject fx = Instantiate(effect_Launch, transform.position, Quaternion.identity);
-        Destroy(fx, 0.5f);
-
         //搜索攻击
         foreach (GameObject item in GetTargets())
         {
-            item.GetComponent<Unit>().TakeDamage(1);
-            
+            Debug.Log("att");
+            LaunchMissile(item.transform);
+
             //回合伤害量增加
             roundDamage++;
         }
@@ -41,7 +38,7 @@ public class Turret_Nuke : Turret {
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, range);
         foreach (var item in cols)
         {
-            if(item.gameObject.tag == enemyTag)
+            if (item.gameObject.tag == enemyTag)
             {
                 targets.Add(item.gameObject);
             }
@@ -50,18 +47,11 @@ public class Turret_Nuke : Turret {
         return targets;
     }
 
-    private void OnMouseEnter()
+    void LaunchMissile(Transform _target)
     {
-        rangeDisplay.SetActive(true);
+        GameObject missile = Instantiate(missilePrefab, transform.position, transform.rotation);
+
+        missile.GetComponent<HomingMissile>().target = _target;
     }
-
-
-    private void OnMouseExit()
-    {
-        if (!GameManager.instance.draging)
-            rangeDisplay.SetActive(false);
-
-    }
-
 
 }

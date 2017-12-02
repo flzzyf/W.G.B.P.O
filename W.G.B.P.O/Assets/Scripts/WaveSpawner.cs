@@ -15,6 +15,11 @@ public class WaveSpawner : MonoBehaviour {
 
 	void Update ()
 	{
+        if (!GameManager.instance.gaming)
+        {
+            return;
+        }
+
 		//仍在波次中
 		if (spawningWave == true)
 			return;
@@ -30,7 +35,7 @@ public class WaveSpawner : MonoBehaviour {
 		{
 			spawnCountDown = timeBetweenWaves;
 			StartCoroutine(SpawnWave());
-			currentWaveIndex++;
+			//currentWaveIndex++;
 
 		}
 		else
@@ -38,7 +43,7 @@ public class WaveSpawner : MonoBehaviour {
 			spawnCountDown -= Time.deltaTime;
 		}
 	}
-
+    //回合开始
 	IEnumerator SpawnWave()
 	{
 		//Debug.Log ("spawn");
@@ -60,8 +65,19 @@ public class WaveSpawner : MonoBehaviour {
 			//yield return new WaitForSeconds(currentWave.);
 		}
 
-		spawningWave = false;
-
+        TurnEnd();
 	}
+
+    //回合结束
+    void TurnEnd()
+    {
+        currentWaveIndex++;
+
+        spawningWave = false;
+
+        //随机送个塔
+        GameManager.instance.RandomBuildTurret();
+
+    }
 
 }
