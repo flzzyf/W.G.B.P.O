@@ -9,6 +9,7 @@ public class WaveSpawner : MonoBehaviour {
 	public float timeBetweenWaves = 3f;
 
 	int currentWaveIndex = 0;
+
 	float spawnCountDown = 0;
 
 	bool spawningWave = false;
@@ -27,6 +28,7 @@ public class WaveSpawner : MonoBehaviour {
 		//完成全部波数
 		if(currentWaveIndex == wave.Length)
 		{
+            Debug.Log("胜利");
 			//胜利
 			this.enabled = false;
 		}
@@ -35,7 +37,6 @@ public class WaveSpawner : MonoBehaviour {
 		{
 			spawnCountDown = timeBetweenWaves;
 			StartCoroutine(SpawnWave());
-			//currentWaveIndex++;
 
 		}
 		else
@@ -46,14 +47,16 @@ public class WaveSpawner : MonoBehaviour {
     //回合开始
 	IEnumerator SpawnWave()
 	{
-		//Debug.Log ("spawn");
 
 		spawningWave = true;
+
+        //Debug.Log(currentWaveIndex);
 
 		Wave currentWave = wave[currentWaveIndex];
 
 		for (int i = 0; i < currentWave.waveUnits.Length; i++)
 		{
+
 			for (int j = 0; j < currentWave.waveUnits[i].num; j++) 
 			{
 				GameObject unit = Instantiate(currentWave.waveUnits[i].waveUnit, WayPointManager.wayPoints[0].position, Quaternion.identity);
@@ -62,7 +65,6 @@ public class WaveSpawner : MonoBehaviour {
 				yield return new WaitForSeconds(currentWave.waveUnits[i].rate);
 
 			}
-			//yield return new WaitForSeconds(currentWave.);
 		}
 
         TurnEnd();

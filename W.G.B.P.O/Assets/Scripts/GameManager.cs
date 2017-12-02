@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
 
         int t = Random.Range(0, turrets.Length);
         
-        t = 0;
+        //t = 1;
 
         idleNodes[n].GetComponent<Node>().BuildTurret(turrets[t]);
     }
@@ -80,18 +80,21 @@ public class GameManager : MonoBehaviour {
     //获取未建设炮塔的节点组
     GameObject[] GetIdleNodes()
     {
-
         List<GameObject> nodesTemp = new List<GameObject>(nodes);
 
-        foreach (GameObject item in nodesTemp)
+        GameObject item;
+
+        for (int i = 0; i < nodesTemp.Count; i++)
         {
-            if(item.GetComponent<Node>().turret != null)
+            item = nodesTemp[i];
+            if (item.GetComponent<Node>().turret != null)
             {
                 nodesTemp.Remove(item);
 
             }
+
         }
-    
+
         return nodesTemp.ToArray();
 }
 
@@ -107,11 +110,6 @@ public class GameManager : MonoBehaviour {
     public void EnemyReachTarget()
     {
         SoundManager.instance.PlaySound(enemyReachSound);
-
-    }
-
-    void TurnStart()
-    {
 
     }
 

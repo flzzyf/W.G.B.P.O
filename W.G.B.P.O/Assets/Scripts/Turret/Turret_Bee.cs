@@ -23,7 +23,6 @@ public class Turret_Bee : Turret {
         //搜索攻击
         foreach (GameObject item in GetTargets())
         {
-            Debug.Log("att");
             LaunchMissile(item.transform);
 
             //回合伤害量增加
@@ -49,6 +48,8 @@ public class Turret_Bee : Turret {
 
     void LaunchMissile(Transform _target)
     {
+        Quaternion rot = Quaternion.Euler(_target.position - transform.position);
+
         GameObject missile = Instantiate(missilePrefab, transform.position, transform.rotation);
 
         missile.GetComponent<HomingMissile>().target = _target;
