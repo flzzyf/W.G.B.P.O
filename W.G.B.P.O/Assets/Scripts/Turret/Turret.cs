@@ -77,6 +77,8 @@ public class Turret : MonoBehaviour {
     //鼠标按下
     private void OnMouseDown()
     {
+        Debug.Log("Turret");
+
         GameManager.instance.draging = true;
 
         GameManager.instance.dragingTurret = gameObject;
@@ -104,7 +106,7 @@ public class Turret : MonoBehaviour {
 
         gameObject.layer = defaultLayer;
 
-        transform.position = transform.parent.position;
+        transform.position = transform.parent.position + new Vector3(0, 0, -3);
 
     }
     //鼠标拖动

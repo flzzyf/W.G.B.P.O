@@ -9,7 +9,7 @@ public class Unit : MonoBehaviour {
     public int maxHp = 1;
     int currentHp = 1;
 
-    public GameObject GFX;
+    public GameObject gfx;
 
     bool isDead = false;
 
@@ -19,7 +19,7 @@ public class Unit : MonoBehaviour {
 
     private void Awake()
     {
-        renderer = GFX.GetComponent<Renderer>();
+        renderer = gfx.GetComponent<Renderer>();
 
     }
 
@@ -29,8 +29,7 @@ public class Unit : MonoBehaviour {
 
         AppearanceModify();
 
-        animator = GetComponent<Animator>();
-
+        animator = gfx.GetComponent<Animator>();
 
     }
 
