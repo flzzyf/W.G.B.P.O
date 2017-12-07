@@ -218,9 +218,6 @@ MonoBehaviour:
   range: 3
   fireRate: 1
   reloadPicture: {fileID: 1593947430872520}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
   sound_Launch:
     clip: {fileID: 8300000, guid: 2f6c5897dde10fa40ae7601d70f267af, type: 3}
     volume: 0.2
@@ -346,8 +343,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 518994b34a3284a469fba29e2cf6ad3c, type: 3}
-  m_Color: {r: 1, g: 0.45588237, b: 0.45588237, a: 1}
+  m_Sprite: {fileID: 21300000, guid: dfd2673b24a5b4248839e29df94ee46e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

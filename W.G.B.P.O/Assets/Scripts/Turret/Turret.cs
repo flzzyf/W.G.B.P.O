@@ -77,8 +77,6 @@ public class Turret : MonoBehaviour {
     //鼠标按下
     private void OnMouseDown()
     {
-        Debug.Log("Turret");
-
         GameManager.instance.draging = true;
 
         GameManager.instance.dragingTurret = gameObject;

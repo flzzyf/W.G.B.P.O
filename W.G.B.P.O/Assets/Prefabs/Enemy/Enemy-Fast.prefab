@@ -37,9 +37,9 @@ GameObject:
   - component: {fileID: 4032311263514828}
   - component: {fileID: 114708268906588512}
   - component: {fileID: 114716248766999376}
-  - component: {fileID: 61169369298581862}
   - component: {fileID: 50959282373667428}
   - component: {fileID: 95380845811985994}
+  - component: {fileID: 58564586089805522}
   m_Layer: 0
   m_Name: Enemy-Fast
   m_TagString: Enemy
@@ -94,8 +94,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61169369298581862
-BoxCollider2D:
+--- !u!58 &58564586089805522
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -107,18 +107,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.5}
-    newSize: {x: 5, y: 5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
-  m_EdgeRadius: 0
+  m_Radius: 0.32
 --- !u!95 &95380845811985994
 Animator:
   serializedVersion: 3
@@ -149,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   maxHp: 1
-  GFX: {fileID: 1683831155457712}
+  gfx: {fileID: 1683831155457712}
 --- !u!114 &114716248766999376
 MonoBehaviour:
   m_ObjectHideFlags: 1

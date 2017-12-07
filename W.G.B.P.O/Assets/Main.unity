@@ -3852,7 +3852,25 @@ MonoBehaviour:
       num: 6
       hp: 2
       rate: 0.5
-  timeBetweenWaves: 3
+  - waveUnits:
+    - waveUnit: {fileID: 1690341191945334, guid: 4b319512f73f3754aa1826b6fac6480a,
+        type: 2}
+      num: 6
+      hp: 2
+      rate: 0.5
+  - waveUnits:
+    - waveUnit: {fileID: 1841062984531920, guid: 2207c4410b41444fc96159217a0cf5b6,
+        type: 2}
+      num: 10
+      hp: 3
+      rate: 0.5
+  - waveUnits:
+    - waveUnit: {fileID: 1841062984531920, guid: 2207c4410b41444fc96159217a0cf5b6,
+        type: 2}
+      num: 12
+      hp: 5
+      rate: 1
+  timeBetweenWaves: 5
 --- !u!114 &1881212865
 MonoBehaviour:
   m_ObjectHideFlags: 0
