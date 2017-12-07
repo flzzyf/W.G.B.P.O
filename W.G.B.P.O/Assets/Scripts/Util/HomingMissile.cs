@@ -72,6 +72,7 @@ public class HomingMissile : MonoBehaviour {
         }
 
         if(collision.gameObject.CompareTag(GameManager.enemyTag)){
+
             collision.gameObject.GetComponent<Unit>().TakeDamage(1);
 
             Destroy(gameObject);
