@@ -34,11 +34,11 @@ public class GameManager : MonoBehaviour {
 
     GameObject[] nodes;
 
-    public GameObject textCanvasPrefab;
-
     public SoundEffect enemyReachSound;
 
     public bool gaming = false;
+
+    public static string enemyTag = "Enemy";
 
     private void Start()
     {
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 
         RandomBuildTurret();
 
-        CreateFloatingText(Vector2.zero, "qwe");
+        //FloatingText.CreateFloatingText(Vector2.zero, "qwe");
 
         gaming = true;
 
@@ -98,18 +98,37 @@ public class GameManager : MonoBehaviour {
         return nodesTemp.ToArray();
 }
 
-    //创建浮动文字
-    public void CreateFloatingText(Vector2 _pos, string _text)
-    {
-        GameObject text = Instantiate(textCanvasPrefab, _pos, Quaternion.identity);
-
-        text.GetComponent<FloatingText>().SetText((_text));
-
-    }
-
     public void EnemyReachTarget()
     {
         SoundManager.instance.PlaySound(enemyReachSound);
+
+    }
+    //选出本回合MVP炮塔
+    public void TurretMVP(){
+        int max = 0;
+        List<GameObject> maxTurret = new List<GameObject>();
+
+        //遍历每个炮塔
+        foreach (var item in GameObject.FindGameObjectsWithTag("Turret"))
+        {
+            Turret turret = item.GetComponent<Turret>();
+            if(turret.GetRoundDamage() == max){
+                maxTurret.Add(item);
+
+            }else if (turret.GetRoundDamage() > max){
+                max = turret.GetRoundDamage();
+
+                maxTurret.Clear();
+                maxTurret.Add(item);
+            }
+
+            turret.ClearRoundDamage();
+        }
+
+        foreach (var item in maxTurret)
+        {
+            //CreateFloatingText(item.transform.position, "MVP");
+        }
 
     }
 

@@ -6,7 +6,9 @@ public class Unit_Movement : MonoBehaviour {
 
     public float rotSpeed = 3;
 
-    int currentWayPointIndex = 0;
+    [HideInInspector]
+    public int currentWayPointIndex = 0;
+
 	Vector3 targetWayPoint;
 	Unit unit;
 

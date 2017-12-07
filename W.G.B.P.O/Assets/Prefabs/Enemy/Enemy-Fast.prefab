@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4283686489123284}
   - component: {fileID: 212700688735632752}
+  - component: {fileID: 95639507089786134}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -116,6 +117,23 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1690341191945334}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5aa7432d6d230d41adf6178e6da1fcc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95639507089786134
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1683831155457712}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c5aa7432d6d230d41adf6178e6da1fcc, type: 2}

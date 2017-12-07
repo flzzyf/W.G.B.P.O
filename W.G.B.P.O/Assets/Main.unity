@@ -3043,8 +3043,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1524975890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.75, y: -7.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 10, y: -7.5, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -3353,7 +3353,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4162950250579906, guid: 3d2a3cc0b6d9c4cb08c19887061d8aae, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4162950250579906, guid: 3d2a3cc0b6d9c4cb08c19887061d8aae, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3803,6 +3803,7 @@ GameObject:
   - component: {fileID: 1881212867}
   - component: {fileID: 1881212868}
   - component: {fileID: 1881212869}
+  - component: {fileID: 1881212870}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3942,12 +3943,21 @@ MonoBehaviour:
   turrets:
   - {fileID: 1407301610418910, guid: 365739132acb847d3bdde25ddaa3df1e, type: 2}
   - {fileID: 1587244738631602, guid: 77ad1f6ccc11ae2489eca4b5d1f6566c, type: 2}
-  textCanvasPrefab: {fileID: 1292875534094796, guid: 1dac9aa3cbc284ec2be56da5603b9faa,
-    type: 2}
   enemyReachSound:
     clip: {fileID: 8300000, guid: 0305c235362ceca4da01b75586d237e7, type: 3}
     volume: 0.2
   gaming: 0
+--- !u!114 &1881212870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1881212862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f844d2f4f7194492ba678a93a62d613f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1914665566
 Prefab:
   m_ObjectHideFlags: 0

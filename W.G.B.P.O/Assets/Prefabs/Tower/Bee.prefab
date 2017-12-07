@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 61323716612151400}
   m_Layer: 9
   m_Name: Bee
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 3
-  fireRate: 1
+  fireRate: 2
   reloadPicture: {fileID: 1593947430872520}
   sound_Launch:
     clip: {fileID: 8300000, guid: 2f6c5897dde10fa40ae7601d70f267af, type: 3}
@@ -227,6 +227,7 @@ MonoBehaviour:
   gfx: {fileID: 1303151886936092}
   missilePrefab: {fileID: 1863448403127684, guid: fca99dbbcd383364b884e3134d80e662,
     type: 2}
+  attackCount: 5
 --- !u!212 &212271783512240534
 SpriteRenderer:
   m_ObjectHideFlags: 1

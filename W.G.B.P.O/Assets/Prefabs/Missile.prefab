@@ -92,6 +92,11 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 5
   rotSpeed: 400
+  hive: {fileID: 0}
+  returnHive: 1
+  autoSearchNewTarget: 1
+  searchRange: 3
+  targetTag: Enemy
 --- !u!212 &212051509504223344
 SpriteRenderer:
   m_ObjectHideFlags: 1

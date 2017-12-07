@@ -13,8 +13,14 @@ public class Turret : MonoBehaviour {
 
     Animator animator;
 
-    //回合造成伤害
+    #region 回合造成伤害
     protected int roundDamage = 0;
+
+    public int GetRoundDamage() { return roundDamage; }
+
+    public void ClearRoundDamage() { roundDamage = 0; }
+
+#endregion
 
     public SoundEffect sound_Launch;
 
@@ -25,7 +31,6 @@ public class Turret : MonoBehaviour {
 
     LayerMask defaultLayer;
 
-    protected static string enemyTag = "Enemy";
 
     public GameObject gfx;
 
@@ -130,11 +135,6 @@ public class Turret : MonoBehaviour {
         pos.z = 0;
 
         return pos;
-    }
-
-    public void ClearRoundDamage()
-    {
-        roundDamage = 0;
     }
 
 }

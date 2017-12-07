@@ -31,6 +31,7 @@ public class Turret_Nuke : Turret {
             
             //回合伤害量增加
             roundDamage++;
+
         }
     }
 
@@ -41,7 +42,7 @@ public class Turret_Nuke : Turret {
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, range);
         foreach (var item in cols)
         {
-            if(item.gameObject.tag == enemyTag)
+            if(item.gameObject.tag == GameManager.enemyTag)
             {
                 targets.Add(item.gameObject);
             }

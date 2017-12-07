@@ -77,6 +77,8 @@ public class WaveSpawner : MonoBehaviour {
 
         spawningWave = false;
 
+        //GameManager.instance.TurretMVP();
+
         //随机送个塔
         GameManager.instance.RandomBuildTurret();
 
