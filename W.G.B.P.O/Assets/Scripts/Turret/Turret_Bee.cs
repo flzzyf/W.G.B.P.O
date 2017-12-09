@@ -8,9 +8,15 @@ public class Turret_Bee : Turret {
 
     public int attackCount = 3;
 
+    public GameObject rangeDisplay;
+
     void Start()
     {
         Init();
+
+        rangeDisplay = Instantiate(rangeDisplay, transform.position, transform.rotation, transform);
+
+        rangeDisplay.transform.localScale *= range;
     }
 
     void Update()
@@ -92,6 +98,19 @@ public class Turret_Bee : Turret {
         }
 
         return list;
+
+    }
+
+    private void OnMouseEnter()
+    {
+        rangeDisplay.SetActive(true);
+    }
+
+
+    private void OnMouseExit()
+    {
+        if (!GameManager.instance.draging)
+            rangeDisplay.SetActive(false);
 
     }
 

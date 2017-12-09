@@ -12,7 +12,10 @@ public class WaveSpawner : MonoBehaviour {
 
 	float spawnCountDown = 0;
 
+    //回合中
 	bool spawningWave = false;
+
+    public static int enemiesAlive = 0;
 
 	void Update ()
 	{
@@ -22,7 +25,7 @@ public class WaveSpawner : MonoBehaviour {
         }
 
 		//仍在波次中
-		if (spawningWave == true)
+		if (enemiesAlive > 0)
 			return;
 
 		//完成全部波数
@@ -47,23 +50,25 @@ public class WaveSpawner : MonoBehaviour {
     //回合开始
 	IEnumerator SpawnWave()
 	{
-
 		spawningWave = true;
 
-        //Debug.Log(currentWaveIndex);
+        Debug.Log("回合" + currentWaveIndex + "开始");
 
 		Wave currentWave = wave[currentWaveIndex];
 
-		for (int i = 0; i < currentWave.waveUnits.Length; i++)
-		{
+        for (int i = 0; i < currentWave.waveUnits.Length; i++)
+            enemiesAlive += currentWave.waveUnits[i].num;
 
+        Debug.Log(enemiesAlive);
+
+        for (int i = 0; i < currentWave.waveUnits.Length; i++)
+		{
 			for (int j = 0; j < currentWave.waveUnits[i].num; j++) 
 			{
 				GameObject unit = Instantiate(currentWave.waveUnits[i].waveUnit, WayPointManager.wayPoints[0].position, Quaternion.identity);
                 unit.GetComponent<Unit>().maxHp = currentWave.waveUnits[i].hp;
 
 				yield return new WaitForSeconds(currentWave.waveUnits[i].rate);
-
 			}
 		}
 

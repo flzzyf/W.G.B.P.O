@@ -70,6 +70,9 @@ public class Unit : MonoBehaviour {
     void Death()
     {
         Destroy(gameObject);
+
+        WaveSpawner.enemiesAlive--;
+        Debug.Log(WaveSpawner.enemiesAlive);
     }
 
     public int GetHp()

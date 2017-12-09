@@ -10,6 +10,10 @@ public class Turret_Nuke : Turret {
 
     void Start () {
         Init();
+
+        rangeDisplay = Instantiate(rangeDisplay, transform.position, transform.rotation, transform);
+
+        rangeDisplay.transform.localScale *= range;
 	}
 	
 	void Update () {
