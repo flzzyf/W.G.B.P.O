@@ -66,18 +66,19 @@ public class HomingMissile : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform == target)
+
+        if(collision.gameObject.CompareTag(GameManager.enemyTag) || collision.transform == target)
         {
+            if (collision.gameObject.CompareTag(GameManager.enemyTag))
+            {
+                collision.gameObject.GetComponent<Unit>().TakeDamage(1);
+
+            }
+
             Destroy(gameObject);
+
         }
 
-        if(collision.gameObject.CompareTag(GameManager.enemyTag)){
-
-            collision.gameObject.GetComponent<Unit>().TakeDamage(1);
-
-            Destroy(gameObject);
-
-        }
     }
 
     //能找到目标
