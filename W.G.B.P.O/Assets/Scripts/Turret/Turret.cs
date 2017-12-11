@@ -109,7 +109,7 @@ public class Turret : MonoBehaviour {
 
         gameObject.layer = defaultLayer;
 
-        transform.position = transform.parent.position + new Vector3(0, 0, -3);
+        transform.position = transform.parent.position + Vector3.back;
 
     }
     //鼠标拖动

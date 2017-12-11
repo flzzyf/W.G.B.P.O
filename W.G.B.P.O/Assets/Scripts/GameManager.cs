@@ -54,14 +54,13 @@ public class GameManager : MonoBehaviour {
 
     }
     //在一个节点造炮塔
-    public void BuildTurret(GameObject _node)
+    public void BuildTurret(GameObject _node, int turretType = 0)
     {
         Node node = _node.GetComponent<Node>();
 
-        int t = Random.Range(0, turrets.Length);
+        GameObject go = Instantiate(turrets[turretType], node.transform.position + Vector3.back, Quaternion.identity, node.transform);
 
-        node.BuildTurret(turrets[t]);
-
+        node.turret = go;
     }
     //随机在一个闲置节点造炮塔
     public void RandomBuildTurret()
@@ -72,9 +71,7 @@ public class GameManager : MonoBehaviour {
 
         int t = Random.Range(0, turrets.Length);
         
-        //t = 1;
-
-        idleNodes[n].GetComponent<Node>().BuildTurret(turrets[t]);
+        BuildTurret(idleNodes[n], t);
     }
 
     //获取未建设炮塔的节点组
