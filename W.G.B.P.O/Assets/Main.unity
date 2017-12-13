@@ -3809,7 +3809,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1881212863
 Transform:
@@ -3906,7 +3906,7 @@ MonoBehaviour:
       num: 20
       hp: 4
       rate: 0.5
-  timeBetweenWaves: 5
+  timeBetweenWaves: 3
 --- !u!114 &1881212865
 MonoBehaviour:
   m_ObjectHideFlags: 0

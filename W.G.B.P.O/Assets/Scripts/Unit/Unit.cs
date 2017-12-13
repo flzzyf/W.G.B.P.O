@@ -69,6 +69,11 @@ public class Unit : MonoBehaviour {
 
     void Death()
     {
+        if (isDead)
+            return;
+
+        isDead = true;
+
         Destroy(gameObject);
 
         WaveSpawner.enemiesAlive--;

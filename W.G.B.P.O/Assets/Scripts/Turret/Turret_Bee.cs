@@ -103,7 +103,8 @@ public class Turret_Bee : Turret {
 
     private void OnMouseEnter()
     {
-        rangeDisplay.SetActive(true);
+        if(!GameManager.instance.draging)
+            rangeDisplay.SetActive(true);
     }
 
 
