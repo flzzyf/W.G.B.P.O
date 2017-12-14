@@ -185,8 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b32ecdfd0a94abeb83b62cdf4fc0da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1.5
-  fireRate: 3
+  range: 1.8
+  fireRate: 4
   reloadPicture: {fileID: 1264687629150226}
   sound_Launch:
     clip: {fileID: 8300000, guid: 2f6c5897dde10fa40ae7601d70f267af, type: 3}
