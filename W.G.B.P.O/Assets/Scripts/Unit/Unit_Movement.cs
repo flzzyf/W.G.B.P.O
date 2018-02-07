@@ -20,28 +20,23 @@ public class Unit_Movement : MonoBehaviour {
 
 	void Update ()
 	{
-		//朝下个点移动
+		//朝下个点方向
 		Vector3 dir = targetWayPoint - transform.position;
-
         //移动
         transform.Translate(dir.normalized * unit.speed * Time.deltaTime, Space.World);
-
         //旋转
         if (dir != Vector3.zero)
         {
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
-
+            //旋转
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotSpeed * Time.deltaTime);
-
         }
         //抵达
         if (dir.magnitude <= unit.speed * Time.deltaTime)
 		{
 			ReachTarget();
 		}
-        
-
     }
 
     //获取下个路径点
