@@ -31,15 +31,15 @@ public class Turret : MonoBehaviour {
 
     LayerMask defaultLayer;
 
-
     public GameObject gfx;
+
+    public float force = 2;
 
     protected void Init () 
 	{
         animator = gfx.GetComponent<Animator>();
         
         defaultLayer = gameObject.layer;
-
     }
 
     protected void Update ()
@@ -54,7 +54,6 @@ public class Turret : MonoBehaviour {
         else
         {
             animator.SetBool("Reloading", false);
-
         }
     }
 

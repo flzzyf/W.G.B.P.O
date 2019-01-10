@@ -73,6 +73,7 @@ public class HomingMissile : MonoBehaviour {
             {
                 collision.gameObject.GetComponent<Unit>().TakeDamage(1);
 
+                collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * 1, ForceMode2D.Impulse);
             }
 
             Destroy(gameObject);

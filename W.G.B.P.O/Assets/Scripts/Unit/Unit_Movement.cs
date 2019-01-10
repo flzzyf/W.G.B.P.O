@@ -33,7 +33,7 @@ public class Unit_Movement : MonoBehaviour {
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotSpeed * Time.deltaTime);
         }
         //抵达
-        if (dir.magnitude <= unit.speed * Time.deltaTime)
+        if (dir.magnitude <= unit.speed * 5 * Time.deltaTime)
 		{
 			ReachTarget();
 		}

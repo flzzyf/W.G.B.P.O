@@ -12,7 +12,7 @@ public class GameUI : MonoBehaviour {
 
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
 
         GameSpeedManager.isPause = false;
 

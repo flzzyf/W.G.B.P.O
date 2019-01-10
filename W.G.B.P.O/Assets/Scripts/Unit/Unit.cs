@@ -13,13 +13,13 @@ public class Unit : MonoBehaviour {
 
     bool isDead = false;
 
-    Renderer renderer;
+    SpriteRenderer spriteRenderer;
 
     Animator animator;
 
     private void Awake()
     {
-        renderer = gfx.GetComponent<Renderer>();
+        spriteRenderer = gfx.GetComponent<SpriteRenderer>();
 
     }
 
@@ -64,7 +64,7 @@ public class Unit : MonoBehaviour {
     //修改外形
     public void AppearanceModify()
     {
-        renderer.material.color = ColorManager.instance.GetColor(currentHp - 1);
+        spriteRenderer.material.color = ColorManager.instance.GetColor(currentHp - 1);
     }
 
     void Death()
@@ -77,7 +77,6 @@ public class Unit : MonoBehaviour {
         Destroy(gameObject);
 
         WaveSpawner.enemiesAlive--;
-        Debug.Log(WaveSpawner.enemiesAlive);
     }
 
     public int GetHp()

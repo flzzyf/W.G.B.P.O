@@ -8,6 +8,7 @@ public class Turret_Nuke : Turret {
 
     public GameObject rangeDisplay;
 
+
     void Start () {
         Init();
 
@@ -32,6 +33,9 @@ public class Turret_Nuke : Turret {
         foreach (GameObject item in GetTargets())
         {
             item.GetComponent<Unit>().TakeDamage(1);
+
+            //施力
+            item.GetComponent<Rigidbody2D>().AddForce((item.transform.position - transform.position).normalized * force, ForceMode2D.Impulse);
             
             //回合伤害量增加
             roundDamage++;

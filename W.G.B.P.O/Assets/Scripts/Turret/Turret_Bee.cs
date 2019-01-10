@@ -71,9 +71,7 @@ public class Turret_Bee : Turret {
             LaunchMissile(list[0].transform);
 
             yield return new WaitForSeconds(.1f);
-
         }
-
     }
 
     List<GameObject> GetTargetOrderedList(){
