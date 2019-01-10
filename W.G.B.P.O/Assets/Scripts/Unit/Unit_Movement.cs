@@ -23,6 +23,7 @@ public class Unit_Movement : MonoBehaviour {
 		//朝下个点方向
 		Vector3 dir = targetWayPoint - transform.position;
         //移动
+        //GetComponent<Rigidbody2D>().MovePosition(transform.position +  dir.normalized * unit.speed * Time.deltaTime);
         transform.Translate(dir.normalized * unit.speed * Time.deltaTime, Space.World);
         //旋转
         if (dir != Vector3.zero)
@@ -33,8 +34,11 @@ public class Unit_Movement : MonoBehaviour {
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotSpeed * Time.deltaTime);
         }
         //抵达
-        if (dir.magnitude <= unit.speed * 5 * Time.deltaTime)
-		{
+        //距离下个点很近，或者和下个点的方向与下个点到下下个点方向差别过大
+        //if (dir.magnitude <= unit.speed * Time.deltaTime || 
+        //    Vector2.Angle(dir, WayPointManager.wayPoints[currentWayPointIndex + 1].position - WayPointManager.wayPoints[currentWayPointIndex].position) > 100)
+        if (dir.magnitude <= .4f)
+        {
 			ReachTarget();
 		}
     }

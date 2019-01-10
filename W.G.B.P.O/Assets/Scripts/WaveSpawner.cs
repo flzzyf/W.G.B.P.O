@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveSpawner : MonoBehaviour {
+public class WaveSpawner : Singleton<WaveSpawner> {
 
 	public Wave[] wave;
 
 	public float timeBetweenWaves = 3f;
 
-	int currentWaveIndex = 0;
+    [HideInInspector]
+	public int currentWaveIndex = 0;
 
 	float spawnCountDown = 0;
 
@@ -17,7 +18,7 @@ public class WaveSpawner : MonoBehaviour {
 
     public static int enemiesAlive = 0;
 
-	void Update ()
+    void Update ()
 	{
         if (!GameManager.instance.gaming)
         {
@@ -52,14 +53,10 @@ public class WaveSpawner : MonoBehaviour {
 	{
 		spawningWave = true;
 
-        Debug.Log("回合" + currentWaveIndex + "开始");
-
 		Wave currentWave = wave[currentWaveIndex];
 
         for (int i = 0; i < currentWave.waveUnits.Length; i++)
             enemiesAlive += currentWave.waveUnits[i].num;
-
-        Debug.Log(enemiesAlive);
 
         for (int i = 0; i < currentWave.waveUnits.Length; i++)
 		{

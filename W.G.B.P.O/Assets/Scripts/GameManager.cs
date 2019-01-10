@@ -52,6 +52,13 @@ public class GameManager : MonoBehaviour {
 
         gaming = true;
 
+        WaveSpawner.instance.currentWaveIndex = 4;
+        for (int i = 0; i < 3; i++)
+        {
+            RandomBuildTurret();
+        }
+
+
     }
     //在一个节点造炮塔
     public void BuildTurret(GameObject _node, int turretType = 0)
