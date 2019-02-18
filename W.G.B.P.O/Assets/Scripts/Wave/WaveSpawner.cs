@@ -80,6 +80,9 @@ public class WaveSpawner : Singleton<WaveSpawner>
         //更新关卡数
         text_wave.text = (currentWaveIndex + 1).ToString();
 
+        //播放波次指示器
+        GameManager.instance.wavePointer.SetTrigger("Show");
+
         Wave currentWave = wave[currentWaveIndex];
 
         for (int i = 0; i < currentWave.waveUnits.Length; i++)

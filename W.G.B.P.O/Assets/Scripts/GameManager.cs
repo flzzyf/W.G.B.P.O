@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
     public GameObject panel_GameWin;
     public GameObject panel_GameLose;
 
+    public Animator wavePointer;
+
     private void Start()
     {
         //BuildTurret(startNode);
