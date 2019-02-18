@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject colorParticle;
 
+    public GameObject panel_GameWin;
+    public GameObject panel_GameLose;
+
     private void Start()
     {
         //BuildTurret(startNode);
@@ -129,7 +132,24 @@ public class GameManager : MonoBehaviour
         {
             //CreateFloatingText(item.transform.position, "MVP");
         }
-
     }
 
+    void GameOver()
+    {
+        GameManager.instance.gaming = false;
+    }
+
+    public void GameWin()
+    {
+        GameOver();
+
+        panel_GameWin.SetActive(true);
+    }
+
+    public void GameLose()
+    {
+        GameOver();
+
+        panel_GameLose.SetActive(true);
+    }
 }

@@ -53,6 +53,8 @@ public class WaveSpawner : Singleton<WaveSpawner>
             Debug.Log("胜利");
             //胜利
             this.enabled = false;
+
+            GameManager.instance.GameWin();
         }
 
         if (spawnCountDown <= 0)

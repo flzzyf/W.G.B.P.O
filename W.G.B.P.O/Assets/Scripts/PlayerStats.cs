@@ -65,6 +65,7 @@ public class PlayerStats : MonoBehaviour
     void Death()
     {
         //游戏失败
+        GameManager.instance.GameLose();
 
         heart.Die();
     }

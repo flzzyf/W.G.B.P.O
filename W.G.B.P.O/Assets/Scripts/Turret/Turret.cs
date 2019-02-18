@@ -49,6 +49,9 @@ public class Turret : MonoBehaviour
 
     protected void Update()
     {
+        if (!GameManager.instance.gaming)
+            return;
+
         if (fireCountdown > 0)
         {
             fireCountdown -= Time.deltaTime;
@@ -110,6 +113,12 @@ public class Turret : MonoBehaviour
 
         dragOffset = GetMousePos() - transform.position;
         dragOffset.z = 0;
+
+        //手机版点击显示范围
+#if UNITY_IPHONE || UNITY_ANDROID
+        rangeDisplay.SetActive(true);
+#endif
+
     }
     //鼠标起来
     private void OnMouseUp()
@@ -158,6 +167,10 @@ public class Turret : MonoBehaviour
 
     void OnMouseEnter()
     {
+#if UNITY_IPHONE || UNITY_ANDROID
+        return;
+#endif
+
         rangeDisplay.SetActive(true);
     }
 
@@ -165,6 +178,5 @@ public class Turret : MonoBehaviour
     {
         if (!GameManager.instance.draging)
             rangeDisplay.SetActive(false);
-
     }
 }

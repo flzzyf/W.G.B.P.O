@@ -21,6 +21,9 @@ public class Unit_Movement : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.gaming)
+            return;
+
         //朝下个点方向
         Vector3 dir = targetWayPoint - transform.position;
         //移动
