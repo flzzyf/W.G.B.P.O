@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour {
+public class Turret : MonoBehaviour
+{
 
-	public float range = 3;
+    public float range = 3;
 
     public float fireRate = 1f;
     private float fireCountdown = 0f;
@@ -20,7 +21,7 @@ public class Turret : MonoBehaviour {
 
     public void ClearRoundDamage() { roundDamage = 0; }
 
-#endregion
+    #endregion
 
     public SoundEffect sound_Launch;
 
@@ -35,14 +36,14 @@ public class Turret : MonoBehaviour {
 
     public float force = 2;
 
-    protected void Init () 
-	{
+    protected void Init()
+    {
         animator = gfx.GetComponent<Animator>();
-        
+
         defaultLayer = gameObject.layer;
     }
 
-    protected void Update ()
+    protected void Update()
     {
         if (fireCountdown > 0)
         {
@@ -53,28 +54,46 @@ public class Turret : MonoBehaviour {
         }
         else
         {
+            //冷却完成状态
             animator.SetBool("Reloading", false);
+
+            //拖动中无法攻击
+            if (dragingNoAttacking)
+                return;
+
+            //搜索敌人
+            Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, range);
+            foreach (var item in cols)
+            {
+                if (item.gameObject.tag == GameManager.enemyTag)
+                {
+                    Attack();
+
+                    break;
+                }
+            }
         }
     }
 
     //选中显示范围
-	void OnDrawGizmosSelected(){
-		Gizmos.DrawWireSphere(transform.position, range);
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 
     public virtual void Attack()
     {
-
         //播放音效
         SoundManager.instance.PlaySound(sound_Launch);
 
         animator.SetBool("Reloading", true);
 
-		fireCountdown = fireRate;
+        fireCountdown = fireRate;
 
     }
 
-    bool canAttack(){
+    bool canAttack()
+    {
         return fireCountdown <= 0;
     }
 
@@ -87,17 +106,13 @@ public class Turret : MonoBehaviour {
 
         dragOffset = GetMousePos() - transform.position;
         dragOffset.z = 0;
-
-
-
-
     }
     //鼠标起来
     private void OnMouseUp()
     {
         GameManager.instance.draging = false;
 
-        if(!dragingNoAttacking)
+        if (!dragingNoAttacking)
         {
             //可攻击
             if (canAttack())
@@ -120,7 +135,7 @@ public class Turret : MonoBehaviour {
         Vector3 parentPos = transform.parent.position;
         parentPos.z = 0;
 
-        if(Vector3.Distance(pos, parentPos) > 0.3)
+        if (Vector3.Distance(pos, parentPos) > 0.3)
         {
             gameObject.layer = ignoreLayer;
 

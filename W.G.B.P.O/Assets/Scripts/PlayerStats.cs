@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour {
-
+public class PlayerStats : MonoBehaviour
+{
     public int maxHp = 5;
     int currentHp;
 
-    public GameObject heart;
-    Renderer renderer;
+    public Heart heart;
 
     bool isDead = false;
 
@@ -22,19 +21,17 @@ public class PlayerStats : MonoBehaviour {
         }
     }
 
-    void Start ()
+    void Start()
     {
         currentHp = maxHp;
 
-        renderer = heart.GetComponent<Renderer>();
         AppearanceModify();
-
     }
 
     //修改外形
     public void AppearanceModify()
     {
-        renderer.material.color = ColorManager.instance.GetColor(currentHp - 1);
+        heart.ChangeColor(currentHp);
     }
 
     public void TakeDamage(int _amount)
@@ -60,7 +57,8 @@ public class PlayerStats : MonoBehaviour {
     void Death()
     {
         //游戏失败
-        Destroy(heart);
+
+        heart.Die();
     }
 
 }

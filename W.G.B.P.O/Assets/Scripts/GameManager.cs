@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     #region Singleton
     public static GameManager instance;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject[] turrets;
 
+    public Transform nodeParent;
     GameObject[] nodes;
 
     public SoundEffect enemyReachSound;
@@ -46,19 +48,16 @@ public class GameManager : MonoBehaviour {
 
         nodes = GameObject.FindGameObjectsWithTag("Node");
 
-        RandomBuildTurret();
-
         //FloatingText.CreateFloatingText(Vector2.zero, "qwe");
 
         gaming = true;
 
-        WaveSpawner.instance.currentWaveIndex = 4;
-        for (int i = 0; i < 3; i++)
-        {
-            RandomBuildTurret();
-        }
-
-
+        //测试
+        // WaveSpawner.instance.currentWaveIndex = 4;
+        // for (int i = 0; i < 3; i++)
+        // {
+        //     RandomBuildTurret();
+        // }
     }
     //在一个节点造炮塔
     public void BuildTurret(GameObject _node, int turretType = 0)
@@ -77,7 +76,7 @@ public class GameManager : MonoBehaviour {
         int n = Random.Range(0, idleNodes.Length);
 
         int t = Random.Range(0, turrets.Length);
-        
+
         BuildTurret(idleNodes[n], t);
     }
 
@@ -94,13 +93,12 @@ public class GameManager : MonoBehaviour {
             if (item.GetComponent<Node>().turret != null)
             {
                 nodesTemp.Remove(item);
-
             }
 
         }
 
         return nodesTemp.ToArray();
-}
+    }
 
     public void EnemyReachTarget()
     {
@@ -108,7 +106,8 @@ public class GameManager : MonoBehaviour {
 
     }
     //选出本回合MVP炮塔
-    public void TurretMVP(){
+    public void TurretMVP()
+    {
         int max = 0;
         List<GameObject> maxTurret = new List<GameObject>();
 
@@ -116,10 +115,13 @@ public class GameManager : MonoBehaviour {
         foreach (var item in GameObject.FindGameObjectsWithTag("Turret"))
         {
             Turret turret = item.GetComponent<Turret>();
-            if(turret.GetRoundDamage() == max){
+            if (turret.GetRoundDamage() == max)
+            {
                 maxTurret.Add(item);
 
-            }else if (turret.GetRoundDamage() > max){
+            }
+            else if (turret.GetRoundDamage() > max)
+            {
                 max = turret.GetRoundDamage();
 
                 maxTurret.Clear();
