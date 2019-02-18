@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour {
-
-	public float speed = 3;
+public class Unit : MonoBehaviour
+{
+    public float speed = 3;
 
     public int maxHp = 1;
     int currentHp = 1;
@@ -14,23 +14,16 @@ public class Unit : MonoBehaviour {
     bool isDead = false;
 
     SpriteRenderer spriteRenderer;
-
     Animator animator;
-
-    private void Awake()
-    {
-        spriteRenderer = gfx.GetComponent<SpriteRenderer>();
-
-    }
 
     private void Start()
     {
         currentHp = maxHp;
 
-        AppearanceModify();
-
+        spriteRenderer = gfx.GetComponent<SpriteRenderer>();
         animator = gfx.GetComponent<Animator>();
 
+        AppearanceModify();
     }
 
     public void TakeDamage(int _amount)
@@ -67,7 +60,8 @@ public class Unit : MonoBehaviour {
         spriteRenderer.material.color = ColorManager.instance.GetColor(currentHp - 1);
     }
 
-    void Death()
+    //死亡
+    public void Death()
     {
         if (isDead)
             return;
@@ -76,7 +70,11 @@ public class Unit : MonoBehaviour {
 
         Destroy(gameObject);
 
-        WaveSpawner.enemiesAlive--;
+        WaveSpawner.instance.enemiesAlive--;
+
+        //播放死亡特效
+        GameObject deathFx = Instantiate(GameManager.instance.colorParticle, transform.position, Quaternion.identity);
+        Destroy(deathFx, 1.5f);
     }
 
     public int GetHp()

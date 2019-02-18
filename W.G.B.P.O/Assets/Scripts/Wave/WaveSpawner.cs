@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveSpawner : Singleton<WaveSpawner>
 {
@@ -14,9 +15,21 @@ public class WaveSpawner : Singleton<WaveSpawner>
     float spawnCountDown = 0;
 
     //回合中
-    bool spawningWave = false;
+    //bool spawningWave = false;
 
-    public static int enemiesAlive = 0;
+    public Text text_wave;
+    public Text text_enemies;
+
+    static int enemiesCount;
+    public int enemiesAlive
+    {
+        get { return enemiesCount; }
+        set
+        {
+            text_enemies.text = value.ToString();
+            enemiesCount = value;
+        }
+    }
 
     void Start()
     {
@@ -56,10 +69,14 @@ public class WaveSpawner : Singleton<WaveSpawner>
     //回合开始
     IEnumerator SpawnWave()
     {
-        spawningWave = true;
+        yield return new WaitForSeconds(1);
+        //spawningWave = true;
 
         //随机送个塔
         GameManager.instance.RandomBuildTurret();
+
+        //更新关卡数
+        text_wave.text = (currentWaveIndex + 1).ToString();
 
         Wave currentWave = wave[currentWaveIndex];
 
@@ -85,7 +102,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
     {
         currentWaveIndex++;
 
-        spawningWave = false;
+        //spawningWave = false;
 
         //GameManager.instance.TurretMVP();
 

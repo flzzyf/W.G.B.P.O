@@ -34,6 +34,14 @@ public class PlayerStats : MonoBehaviour
         heart.ChangeColor(currentHp);
     }
 
+    //敌人抵达终点
+    public void EnemyReachTarget(Unit _unit)
+    {
+        TakeDamage(_unit.GetHp());
+
+        SoundManager.instance.PlaySound(GameManager.instance.enemyReachSound);
+    }
+
     public void TakeDamage(int _amount)
     {
         if (!isDead)

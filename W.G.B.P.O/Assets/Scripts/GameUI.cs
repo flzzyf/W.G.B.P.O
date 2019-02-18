@@ -10,6 +10,8 @@ public class GameUI : MonoBehaviour
 
     public GameObject pausePanel;
 
+    public float speedUpTimeScale = 5;
+
     public void Retry()
     {
         GameSpeedManager.isPause = false;
@@ -49,7 +51,6 @@ public class GameUI : MonoBehaviour
             GameSpeedManager.SetTimeScale(0);
 
             pausePanel.SetActive(true);
-
         }
     }
 
@@ -60,7 +61,7 @@ public class GameUI : MonoBehaviour
 
         GameSpeedManager.isSpeedUp = true;
 
-        GameSpeedManager.SetTimeScale(3);
+        GameSpeedManager.SetTimeScale(speedUpTimeScale);
 
     }
 

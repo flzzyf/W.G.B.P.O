@@ -33,7 +33,7 @@ public class Turret_Bee : Turret
 
     void LaunchMissile(Transform _target)
     {
-        Quaternion rot = Quaternion.Euler(_target.position - transform.position);
+        //Quaternion rot = Quaternion.Euler(_target.position - transform.position);
 
         GameObject missile = Instantiate(missilePrefab, transform.position, transform.rotation);
 

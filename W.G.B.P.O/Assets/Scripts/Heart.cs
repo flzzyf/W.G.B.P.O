@@ -7,6 +7,8 @@ public class Heart : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Animator animator;
 
+    public ParticleSystem particle_death;
+
     //改变颜色
     public void ChangeColor(int _color)
     {
@@ -16,6 +18,8 @@ public class Heart : MonoBehaviour
     //心碎掉
     public void Die()
     {
+        spriteRenderer.enabled = false;
 
+        particle_death.Play();
     }
 }

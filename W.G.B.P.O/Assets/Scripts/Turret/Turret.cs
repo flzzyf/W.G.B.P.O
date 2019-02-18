@@ -130,7 +130,6 @@ public class Turret : MonoBehaviour
         transform.position = transform.parent.position + Vector3.back;
 
         rangeDisplay.SetActive(false);
-
     }
     //鼠标拖动
     private void OnMouseDrag()

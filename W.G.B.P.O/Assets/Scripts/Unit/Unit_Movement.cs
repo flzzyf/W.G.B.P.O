@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit_Movement : MonoBehaviour {
+public class Unit_Movement : MonoBehaviour
+{
 
     public float rotSpeed = 3;
 
     [HideInInspector]
     public int currentWayPointIndex = 0;
 
-	Vector3 targetWayPoint;
-	Unit unit;
+    Vector3 targetWayPoint;
+    Unit unit;
 
-	void Start ()
-	{
-		unit = GetComponent<Unit>();
-		ReachTarget();
-	}
+    void Start()
+    {
+        unit = GetComponent<Unit>();
+        ReachTarget();
+    }
 
-	void Update ()
-	{
-		//朝下个点方向
-		Vector3 dir = targetWayPoint - transform.position;
+    void Update()
+    {
+        //朝下个点方向
+        Vector3 dir = targetWayPoint - transform.position;
         //移动
         //GetComponent<Rigidbody2D>().MovePosition(transform.position +  dir.normalized * unit.speed * Time.deltaTime);
         transform.Translate(dir.normalized * unit.speed * Time.deltaTime, Space.World);
@@ -39,34 +40,33 @@ public class Unit_Movement : MonoBehaviour {
         //    Vector2.Angle(dir, WayPointManager.wayPoints[currentWayPointIndex + 1].position - WayPointManager.wayPoints[currentWayPointIndex].position) > 100)
         if (dir.magnitude <= .4f)
         {
-			ReachTarget();
-		}
+            ReachTarget();
+        }
     }
 
     //获取下个路径点
     void GetNextWayPoint()
-	{
-		targetWayPoint = WayPointManager.wayPoints[currentWayPointIndex].position;
-	}
+    {
+        targetWayPoint = WayPointManager.wayPoints[currentWayPointIndex].position;
+    }
 
-	//到达目标点
-	void ReachTarget()
-	{
-		currentWayPointIndex++;
+    //到达目标点
+    void ReachTarget()
+    {
+        currentWayPointIndex++;
 
-		if (currentWayPointIndex == WayPointManager.wayPoints.Length)
-		{
-			//抵达终点
-			Destroy(gameObject);
-            PlayerStats.instance.TakeDamage(unit.GetHp());
+        if (currentWayPointIndex == WayPointManager.wayPoints.Length)
+        {
+            //抵达终点
+            unit.Death();
 
-            GameManager.instance.EnemyReachTarget();
-		}
-		else
-		{
-			//继续走
-			GetNextWayPoint();
-		}
-	}
+            PlayerStats.instance.EnemyReachTarget(unit);
+        }
+        else
+        {
+            //继续走
+            GetNextWayPoint();
+        }
+    }
 
 }

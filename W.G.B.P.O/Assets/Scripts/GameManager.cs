@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public static string enemyTag = "Enemy";
 
+    public GameObject colorParticle;
+
     private void Start()
     {
         //BuildTurret(startNode);
@@ -92,17 +94,11 @@ public class GameManager : MonoBehaviour
             {
                 nodesTemp.Remove(item);
             }
-
         }
 
         return nodesTemp.ToArray();
     }
 
-    public void EnemyReachTarget()
-    {
-        SoundManager.instance.PlaySound(enemyReachSound);
-
-    }
     //选出本回合MVP炮塔
     public void TurretMVP()
     {
