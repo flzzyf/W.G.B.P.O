@@ -18,6 +18,11 @@ public class WaveSpawner : Singleton<WaveSpawner>
 
     public static int enemiesAlive = 0;
 
+    void Start()
+    {
+        enemiesAlive = 0;
+    }
+
     void Update()
     {
         if (!GameManager.instance.gaming)

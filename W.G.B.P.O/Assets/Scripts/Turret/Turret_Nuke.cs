@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret_Nuke : Turret {
+public class Turret_Nuke : Turret
+{
 
     public GameObject effect_Launch;
 
     public GameObject rangeDisplay;
 
 
-    void Start () {
+    void Start()
+    {
         Init();
 
         rangeDisplay = Instantiate(rangeDisplay, transform.position, transform.rotation, transform);
 
         rangeDisplay.transform.localScale *= range;
-	}
-	
-	void Update () {
-        base.Update();
-	}
+    }
 
     public override void Attack()
     {
@@ -36,10 +34,9 @@ public class Turret_Nuke : Turret {
 
             //施力
             item.GetComponent<Rigidbody2D>().AddForce((item.transform.position - transform.position).normalized * force, ForceMode2D.Impulse);
-            
+
             //回合伤害量增加
             roundDamage++;
-
         }
     }
 
@@ -50,7 +47,7 @@ public class Turret_Nuke : Turret {
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, range);
         foreach (var item in cols)
         {
-            if(item.gameObject.tag == GameManager.enemyTag)
+            if (item.gameObject.tag == GameManager.enemyTag)
             {
                 targets.Add(item.gameObject);
             }

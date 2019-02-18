@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret_Bee : Turret {
+public class Turret_Bee : Turret
+{
 
     public GameObject missilePrefab;
 
@@ -17,11 +18,6 @@ public class Turret_Bee : Turret {
         rangeDisplay = Instantiate(rangeDisplay, transform.position, transform.rotation, transform);
 
         rangeDisplay.transform.localScale *= range;
-    }
-
-    void Update()
-    {
-        base.Update();
     }
 
     public override void Attack()
@@ -58,13 +54,15 @@ public class Turret_Bee : Turret {
         missile.GetComponent<HomingMissile>().hive = transform;
     }
 
-    IEnumerator BeeAttack(){
+    IEnumerator BeeAttack()
+    {
 
         for (int i = 0; i < attackCount; i++)
         {
             List<GameObject> list = GetTargetOrderedList();
 
-            if(list.Count == 0){
+            if (list.Count == 0)
+            {
                 break;
             }
 
@@ -74,7 +72,8 @@ public class Turret_Bee : Turret {
         }
     }
 
-    List<GameObject> GetTargetOrderedList(){
+    List<GameObject> GetTargetOrderedList()
+    {
 
         List<GameObject> list = GetTargets();
 
@@ -86,10 +85,11 @@ public class Turret_Bee : Turret {
             Vector3 nextPoint = WayPointManager.wayPoints[nextPoint1].position;
 
             //i在i+1之后
-            if(nextPoint1 < nextPoint2 ||
-               (nextPoint1 == nextPoint2 && 
-                Vector3.Distance(nextPoint, list[i].transform.position) > 
-                Vector3.Distance(nextPoint, list[i + 1].transform.position))){
+            if (nextPoint1 < nextPoint2 ||
+               (nextPoint1 == nextPoint2 &&
+                Vector3.Distance(nextPoint, list[i].transform.position) >
+                Vector3.Distance(nextPoint, list[i + 1].transform.position)))
+            {
                 //对换顺序
                 list.Reverse(i, 2);
             }
@@ -101,7 +101,7 @@ public class Turret_Bee : Turret {
 
     private void OnMouseEnter()
     {
-        if(!GameManager.instance.draging)
+        if (!GameManager.instance.draging)
             rangeDisplay.SetActive(true);
     }
 

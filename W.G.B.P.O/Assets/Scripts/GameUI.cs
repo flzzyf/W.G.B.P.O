@@ -4,20 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameUI : MonoBehaviour {
-
+public class GameUI : MonoBehaviour
+{
     public Text pauseText;
 
     public GameObject pausePanel;
 
     public void Retry()
     {
-        SceneManager.LoadScene(0);
-
         GameSpeedManager.isPause = false;
 
         GameSpeedManager.BackToNormal();
 
+        SceneManager.LoadScene(0);
     }
 
     public void Exit()
