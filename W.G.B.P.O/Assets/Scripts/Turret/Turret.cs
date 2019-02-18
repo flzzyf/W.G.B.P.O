@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-
     public float range = 3;
 
     public float fireRate = 1f;
@@ -36,11 +35,16 @@ public class Turret : MonoBehaviour
 
     public float force = 2;
 
-    protected void Init()
+    public GameObject rangeDisplay;
+
+    void Start()
     {
         animator = gfx.GetComponent<Animator>();
 
         defaultLayer = gameObject.layer;
+
+        //攻击范围显示
+        rangeDisplay.transform.localScale *= range;
     }
 
     protected void Update()
@@ -125,6 +129,8 @@ public class Turret : MonoBehaviour
 
         transform.position = transform.parent.position + Vector3.back;
 
+        rangeDisplay.SetActive(false);
+
     }
     //鼠标拖动
     private void OnMouseDrag()
@@ -151,4 +157,15 @@ public class Turret : MonoBehaviour
         return pos;
     }
 
+    void OnMouseEnter()
+    {
+        rangeDisplay.SetActive(true);
+    }
+
+    void OnMouseExit()
+    {
+        if (!GameManager.instance.draging)
+            rangeDisplay.SetActive(false);
+
+    }
 }

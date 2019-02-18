@@ -4,21 +4,9 @@ using UnityEngine;
 
 public class Turret_Bee : Turret
 {
-
     public GameObject missilePrefab;
 
     public int attackCount = 3;
-
-    public GameObject rangeDisplay;
-
-    void Start()
-    {
-        Init();
-
-        rangeDisplay = Instantiate(rangeDisplay, transform.position, transform.rotation, transform);
-
-        rangeDisplay.transform.localScale *= range;
-    }
 
     public override void Attack()
     {
@@ -98,19 +86,4 @@ public class Turret_Bee : Turret
         return list;
 
     }
-
-    private void OnMouseEnter()
-    {
-        if (!GameManager.instance.draging)
-            rangeDisplay.SetActive(true);
-    }
-
-
-    private void OnMouseExit()
-    {
-        if (!GameManager.instance.draging)
-            rangeDisplay.SetActive(false);
-
-    }
-
 }

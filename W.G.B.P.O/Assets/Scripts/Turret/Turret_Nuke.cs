@@ -4,20 +4,7 @@ using UnityEngine;
 
 public class Turret_Nuke : Turret
 {
-
     public GameObject effect_Launch;
-
-    public GameObject rangeDisplay;
-
-
-    void Start()
-    {
-        Init();
-
-        rangeDisplay = Instantiate(rangeDisplay, transform.position, transform.rotation, transform);
-
-        rangeDisplay.transform.localScale *= range;
-    }
 
     public override void Attack()
     {
@@ -55,19 +42,4 @@ public class Turret_Nuke : Turret
 
         return targets;
     }
-
-    private void OnMouseEnter()
-    {
-        rangeDisplay.SetActive(true);
-    }
-
-
-    private void OnMouseExit()
-    {
-        if (!GameManager.instance.draging)
-            rangeDisplay.SetActive(false);
-
-    }
-
-
 }

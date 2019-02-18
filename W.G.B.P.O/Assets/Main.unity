@@ -575,7 +575,7 @@ Transform:
   - {fileID: 1327329686}
   - {fileID: 472192808}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &424335707 stripped
 GameObject:
@@ -622,7 +622,7 @@ Transform:
   - {fileID: 1181556828}
   - {fileID: 1627280096}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &432460112
 MonoBehaviour:
@@ -1900,7 +1900,7 @@ RectTransform:
   - {fileID: 747274541}
   - {fileID: 614492768}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3129,7 +3129,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1421060502
 PrefabInstance:
@@ -3335,7 +3335,7 @@ Transform:
   m_Children:
   - {fileID: 1949051063}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1524975893
 MonoBehaviour:
@@ -4185,12 +4185,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1881212863}
+  - component: {fileID: 1881212869}
   - component: {fileID: 1881212864}
   - component: {fileID: 1881212865}
   - component: {fileID: 1881212866}
   - component: {fileID: 1881212867}
   - component: {fileID: 1881212868}
-  - component: {fileID: 1881212869}
   - component: {fileID: 1881212870}
   m_Layer: 0
   m_Name: GameManager
@@ -4211,7 +4211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1881212864
 MonoBehaviour:

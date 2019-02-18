@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Node : MonoBehaviour {
+public class Node : MonoBehaviour
+{
 
     [HideInInspector]
     public GameObject turret;
@@ -10,7 +11,7 @@ public class Node : MonoBehaviour {
 
     public GameObject gfx;
 
-    void Start ()
+    void Start()
     {
         animator = gfx.GetComponent<Animator>();
 
@@ -19,7 +20,6 @@ public class Node : MonoBehaviour {
     //鼠标悬浮
     private void OnMouseEnter()
     {
-
         if (HasTurret())
         {
             //已有炮塔
@@ -28,7 +28,6 @@ public class Node : MonoBehaviour {
         else
         {
             animator.SetBool("Hover", true);
-
 
             //无炮塔
             if (GameManager.instance.draging)
@@ -39,11 +38,8 @@ public class Node : MonoBehaviour {
                 turret.transform.parent.GetComponent<Node>().ClearTurret();
                 //设置炮塔新的父级节点
                 turret.transform.SetParent(transform);
-
             }
-
         }
-
     }
     //鼠标离开
     private void OnMouseExit()
