@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour {
+public class SoundManager : MonoBehaviour
+{
 
-#region Singleton
+    #region Singleton
     public static SoundManager instance;
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -18,19 +19,15 @@ public class SoundManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
     }
     #endregion
 
     public float lowPitchRange = .95f;
     public float highPitchRange = 1.05f;
 
-    AudioSource audioSource;
+    public AudioSource audioSource;
+    public AudioSource audioSource_BGM;
 
-    void Start ()
-    {
-        audioSource = GetComponent<AudioSource>();
-	}
     //播放音效
     public void PlaySound(SoundEffect _sound, bool _randomPitch = true)
     {

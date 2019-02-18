@@ -153,5 +153,7 @@ public class GameManager : MonoBehaviour
         GameOver();
 
         panel_GameLose.SetActive(true);
+
+        SoundManager.instance.audioSource_BGM.Stop();
     }
 }
