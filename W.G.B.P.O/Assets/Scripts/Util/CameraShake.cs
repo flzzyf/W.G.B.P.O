@@ -13,7 +13,7 @@ public class CameraShake : Singleton<CameraShake>
 	{
 		Vector3 originalPos = transform.localPosition;
 
-		for (float timer = 0; timer < duration; timer += Time.deltaTime)
+		for (float timer = 0; timer < duration; timer += Time.unscaledDeltaTime)
 		{
 			float x = Random.Range(-1f, 1f) * magnitude;
 			float y = Random.Range(-1f, 1f) * magnitude;

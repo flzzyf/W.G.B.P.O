@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551ec2c9b11fed74899f53724721e8f9, type: 3}
   m_Name: CreateTurret
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 27b9baef8c1ec4a428282995277fd9a8, type: 3}
-  volume: 1
+  clip: {fileID: 8300000, guid: c5f28c6ed76ba2142bf27e3a4c5a543a, type: 3}
+  volume: 0.15

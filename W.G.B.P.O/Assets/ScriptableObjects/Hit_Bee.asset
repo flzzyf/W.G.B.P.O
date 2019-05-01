@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Hit_Bee
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: b293a257c8b13444f8cca153dc4a7647, type: 3}
-  volume: 0.07
+  volume: 0.05

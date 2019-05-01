@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
 
 	public GameObject startingNode;
 
+	public Sound sound_CreateTurret;
+
     private void Start()
     {
         //BuildTurret(startNode);
@@ -60,16 +62,27 @@ public class GameManager : MonoBehaviour
 		//     RandomBuildTurret();
 		// }
 
-		BuildTurret(startingNode, 1);
+		StartCoroutine(CreateStartingTurret());
     }
-    //在一个节点造炮塔
-    public void BuildTurret(GameObject _node, int turretType = 0)
+
+	IEnumerator CreateStartingTurret()
+	{
+		yield return new WaitForSeconds(1);
+
+		BuildTurret(startingNode, 1);
+	}
+
+	//在一个节点造炮塔
+	public void BuildTurret(GameObject _node, int turretType = 0)
     {
         Node node = _node.GetComponent<Node>();
 
         GameObject go = Instantiate(turrets[turretType], node.transform.position + Vector3.back, Quaternion.identity, node.transform);
 
         node.turret = go;
+
+		//音效
+		SoundManager.instance.PlaySound(sound_CreateTurret);
     }
     //随机在一个闲置节点造炮塔
     public void RandomBuildTurret()
@@ -143,10 +156,17 @@ public class GameManager : MonoBehaviour
     {
         GameOver();
 
-        panel_GameWin.SetActive(true);
+		StartCoroutine(GameWinCor());
     }
 
-    public void GameLose()
+	IEnumerator GameWinCor()
+	{
+		yield return new WaitForSeconds(1);
+
+		panel_GameWin.SetActive(true);
+	}
+
+	public void GameLose()
     {
         GameOver();
 

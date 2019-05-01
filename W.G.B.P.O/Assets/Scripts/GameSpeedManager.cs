@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GameSpeedManager : MonoBehaviour {
+public class GameSpeedManager : MonoBehaviour{
 
     public static float gameSpeed = 1;
 

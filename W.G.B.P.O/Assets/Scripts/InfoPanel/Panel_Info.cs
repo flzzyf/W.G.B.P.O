@@ -23,11 +23,16 @@ public class Panel_Info : Singleton<Panel_Info>
 		icon.sprite = sprite;
 		text_Title.text = title;
 		text_Info.text = info;
+
+		//GameSpeedManager.SetTimeScale(0);
+		//GameSpeedManager.isPause = true;
 	}
 
 	public void Hide()
 	{
 		animator.SetBool("Show", false);
 
+		//GameSpeedManager.BackToNormal();
+		//GameSpeedManager.isPause = false;
 	}
 }
