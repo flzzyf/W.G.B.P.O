@@ -22,7 +22,7 @@ public class Turret : MonoBehaviour
 
     #endregion
 
-    public SoundEffect sound_Launch;
+    public Sound sound_Launch;
 
     Vector3 dragOffset;
     bool dragingNoAttacking = false;
@@ -36,6 +36,8 @@ public class Turret : MonoBehaviour
     public float force = 2;
 
     public GameObject rangeDisplay;
+
+	public static Turret draggingTurret;
 
     void Start()
     {
@@ -106,9 +108,7 @@ public class Turret : MonoBehaviour
 	//鼠标按下
 	private void OnMouseDown()
 	{
-		GameManager.instance.draging = true;
-
-		GameManager.instance.dragingTurret = gameObject;
+		draggingTurret = this;
 
 		dragOffset = GetMousePos() - transform.position;
 		dragOffset.z = 0;
@@ -122,7 +122,7 @@ public class Turret : MonoBehaviour
 	//鼠标起来
 	private void OnMouseUp()
 	{
-		GameManager.instance.draging = false;
+		draggingTurret = null;
 
 		if (!dragingNoAttacking)
 		{
@@ -170,12 +170,19 @@ public class Turret : MonoBehaviour
         return;
 #endif
 
+		if (draggingTurret != null)
+			return;
+
         rangeDisplay.SetActive(true);
+
     }
 
 	void OnMouseExit()
 	{
-		if (!GameManager.instance.draging)
+		if (draggingTurret != this)
+		{
 			rangeDisplay.SetActive(false);
+
+		}
 	}
 }

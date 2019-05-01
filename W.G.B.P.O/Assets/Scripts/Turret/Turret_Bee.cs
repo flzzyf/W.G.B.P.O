@@ -12,6 +12,8 @@ public class Turret_Bee : Turret
     {
         base.Attack();
 
+		gfx.GetComponent<Animator>().SetTrigger("Attack");
+
 		//播放音效
 		SoundManager.instance.PlaySound(sound_Launch);
 

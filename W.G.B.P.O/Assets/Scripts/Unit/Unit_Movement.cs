@@ -41,14 +41,14 @@ public class Unit_Movement : MonoBehaviour
         //距离下个点很近，或者和下个点的方向与下个点到下下个点方向差别过大
         //if (dir.magnitude <= unit.speed * Time.deltaTime || 
         //    Vector2.Angle(dir, WayPointManager.wayPoints[currentWayPointIndex + 1].position - WayPointManager.wayPoints[currentWayPointIndex].position) > 100)
-        if (dir.magnitude <= .4f)
+        if (dir.magnitude <= .5f)
         {
             ReachTarget();
         }
     }
 
     //获取下个路径点
-    void GetNextWayPoint()
+    public void GetNextWayPoint()
     {
         targetWayPoint = WayPointManager.wayPoints[currentWayPointIndex].position;
     }

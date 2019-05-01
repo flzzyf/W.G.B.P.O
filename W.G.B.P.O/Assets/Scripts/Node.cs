@@ -29,11 +29,11 @@ public class Node : MonoBehaviour
         {
             animator.SetBool("Hover", true);
 
-            //无炮塔
-            if (GameManager.instance.draging)
+			//无炮塔
+            if (Turret.draggingTurret != null)
             {
 
-                turret = GameManager.instance.dragingTurret;
+				turret = Turret.draggingTurret.gameObject;
                 //前任父级节点清除炮塔链接
                 turret.transform.parent.GetComponent<Node>().ClearTurret();
                 //设置炮塔新的父级节点

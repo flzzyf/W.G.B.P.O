@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Turret_Bee
+  m_Controller: {fileID: 9100000, guid: c09c2e6b9e39fb546a19c963294e9f9f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: d0a8a6b74679f7444b3a39a89b5b1ade, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 24c2f63d17d403d4b9cf8ee15993beb1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 690b157e488c6534a8b051707549788a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ab33659173358f04582d3c6eebb4f277, type: 2}

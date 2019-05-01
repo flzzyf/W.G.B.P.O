@@ -23,18 +23,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject startNode;
 
-    [HideInInspector]
-    public bool draging = false;
-
-    [HideInInspector]
-    public GameObject dragingTurret;
-
     public GameObject[] turrets;
 
     public Transform nodeParent;
     GameObject[] nodes;
 
-    public SoundEffect enemyReachSound;
+    public Sound enemyReachSound;
 
     public bool gaming = false;
 
@@ -47,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     public Animator wavePointer;
 
+	public GameObject startingNode;
+
     private void Start()
     {
         //BuildTurret(startNode);
@@ -57,12 +53,14 @@ public class GameManager : MonoBehaviour
 
         gaming = true;
 
-        //测试
-        // WaveSpawner.instance.currentWaveIndex = 4;
-        // for (int i = 0; i < 3; i++)
-        // {
-        //     RandomBuildTurret();
-        // }
+		//测试
+		// WaveSpawner.instance.currentWaveIndex = 4;
+		// for (int i = 0; i < 3; i++)
+		// {
+		//     RandomBuildTurret();
+		// }
+
+		BuildTurret(startingNode, 1);
     }
     //在一个节点造炮塔
     public void BuildTurret(GameObject _node, int turretType = 0)

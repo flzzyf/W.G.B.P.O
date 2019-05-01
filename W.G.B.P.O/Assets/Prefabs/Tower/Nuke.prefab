@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 4171673472180530}
   - component: {fileID: 114893842483000154}
   - component: {fileID: 61796792395894230}
+  - component: {fileID: 7364370076373323823}
   m_Layer: 9
   m_Name: Nuke
   m_TagString: Turret
@@ -333,12 +334,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b32ecdfd0a94abeb83b62cdf4fc0da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1.8
+  range: 1.9
   fireRate: 1.5
   reloadPicture: {fileID: 1264687629150226}
-  sound_Launch:
-    clip: {fileID: 8300000, guid: 2f6c5897dde10fa40ae7601d70f267af, type: 3}
-    volume: 0.2
+  sound_Launch: {fileID: 11400000, guid: 8932d3236888b6645abfcae6b53e58e8, type: 2}
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 2
@@ -373,6 +372,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7364370076373323823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407301610418910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32d31cf55254ab45961c7c76bdc07bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 518994b34a3284a469fba29e2cf6ad3c, type: 3}
+  text_Title: "\u6838\u5B50\u6309\u94AE"
+  text_Info: "\u5BF9\u5468\u56F4\u6240\u6709\u654C\u4EBA\u9020\u6210\u4F24\u5BB3\n\n\u53EF\u7528\u9F20\u6807\u62D6\u66F3\u79FB\u52A8"
 --- !u!1001 &5924733619618240801
 PrefabInstance:
   m_ObjectHideFlags: 0

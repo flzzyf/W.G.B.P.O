@@ -25,6 +25,8 @@ public class HomingMissile : MonoBehaviour {
 
     public string targetTag = "Enemy";
 
+	public Sound sound_Hit;
+
 	void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -74,7 +76,11 @@ public class HomingMissile : MonoBehaviour {
                 collision.gameObject.GetComponent<Unit>().TakeDamage(1);
 
                 collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * 2, ForceMode2D.Impulse);
-            }
+
+				//音效和镜头震动
+				SoundManager.instance.PlaySound(sound_Hit);
+				CameraShake.instance.Shake(.06f, .06f);
+			}
 
             Destroy(gameObject);
         }

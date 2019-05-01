@@ -29,7 +29,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource audioSource_BGM;
 
     //播放音效
-    public void PlaySound(SoundEffect _sound, bool _randomPitch = true)
+    public void PlaySound(Sound _sound, bool _randomPitch = true)
     {
         if (_randomPitch)
         {

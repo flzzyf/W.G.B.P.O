@@ -19,12 +19,14 @@ public class Unit : MonoBehaviour
 	//死亡后生成的单位
 	public Unit generateUnit;
 
+	public Sound sound_Death;
+
     private void Start()
     {
         currentHp = maxHp;
 
         spriteRenderer = gfx.GetComponent<SpriteRenderer>();
-        animator = gfx.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         AppearanceModify();
     }
@@ -73,17 +75,25 @@ public class Unit : MonoBehaviour
 
         Destroy(gameObject);
 
-        WaveSpawner.instance.enemiesAlive--;
+		//如果是最低级敌人，敌人数量减1
+		if(generateUnit == null)
+			WaveSpawner.instance.enemiesAlive--;
 
         //播放死亡特效
         GameObject deathFx = Instantiate(GameManager.instance.colorParticle, transform.position, Quaternion.identity);
         Destroy(deathFx, 1.5f);
+
+		//播放音效
+		SoundManager.instance.PlaySound(sound_Death, true);
 
 		//如果有死亡后生成单位，生成
 		if(generateUnit != null)
 		{
 			Unit unit = Instantiate(generateUnit, transform.position, transform.rotation);
 			unit.maxHp = 5;
+
+			unit.GetComponent<Unit_Movement>().currentWayPointIndex = GetComponent<Unit_Movement>().currentWayPointIndex - 1;
+			unit.GetComponent<Unit_Movement>().GetNextWayPoint();
 		}
     }
 

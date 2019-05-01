@@ -92,7 +92,7 @@ Animator:
   m_GameObject: {fileID: 50}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c09c2e6b9e39fb546a19c963294e9f9f, type: 2}
+  m_Controller: {fileID: 22100000, guid: d8cbb31ec5904e8489e22a7c8cdd477b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 76}
   - component: {fileID: 110}
   - component: {fileID: 87}
+  - component: {fileID: 4176811418234267477}
   m_Layer: 9
   m_Name: Bee
   m_TagString: Turret
@@ -148,11 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
-  fireRate: 2
+  fireRate: 1.5
   reloadPicture: {fileID: 53}
-  sound_Launch:
-    clip: {fileID: 8300000, guid: 2f6c5897dde10fa40ae7601d70f267af, type: 3}
-    volume: 0.2
+  sound_Launch: {fileID: 11400000, guid: 464aba78e38775648957acb35a72953a, type: 2}
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 2
@@ -188,6 +187,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4176811418234267477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32d31cf55254ab45961c7c76bdc07bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: dfd2673b24a5b4248839e29df94ee46e, type: 3}
+  text_Title: "\u8702\u5DE2"
+  text_Info: "\u91CA\u653E\u591A\u53EA\u871C\u8702\u653B\u51FB\u654C\u4EBA\n\n\u53EF\u7528\u9F20\u6807\u62D6\u66F3\u79FB\u52A8"
 --- !u!1 &53
 GameObject:
   m_ObjectHideFlags: 0

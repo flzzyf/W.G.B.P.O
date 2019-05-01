@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class SoundEffect {
+[CreateAssetMenu(menuName = "Sound")]
+public class Sound : ScriptableObject{
 
     public AudioClip clip;
-    public float volume = 0.2f;
+    public float volume = 0.5f;
 }

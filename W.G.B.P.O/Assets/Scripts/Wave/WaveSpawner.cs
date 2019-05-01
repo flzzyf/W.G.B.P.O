@@ -75,6 +75,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
         //spawningWave = true;
 
         //随机送个塔
+		if(currentWaveIndex != 0)
         GameManager.instance.RandomBuildTurret();
 
         //更新关卡数

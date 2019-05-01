@@ -23,7 +23,7 @@ public class Turret_Nuke : Turret
 		Destroy(fx, 0.5f);
 
 		//镜头抖动
-		CameraShake.instance.Shake(.1f, .1f);
+		CameraShake.instance.Shake(.15f, .1f);
 
 		//搜索攻击
 		foreach (GameObject item in GetTargets())

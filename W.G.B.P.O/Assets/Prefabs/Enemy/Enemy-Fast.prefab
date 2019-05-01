@@ -152,6 +152,7 @@ MonoBehaviour:
   gfx: {fileID: 1683831155457712}
   generateUnit: {fileID: 114873448320698248, guid: 2207c4410b41444fc96159217a0cf5b6,
     type: 3}
+  sound_Death: {fileID: 11400000, guid: a0ff0d35a0ce91a449de571f64bd9035, type: 2}
 --- !u!114 &114716248766999376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +187,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &95380845811985994
 Animator:
   serializedVersion: 3
