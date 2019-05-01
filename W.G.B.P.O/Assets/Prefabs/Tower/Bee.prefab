@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
-  fireRate: 4
+  fireRate: 2
   reloadPicture: {fileID: 53}
   sound_Launch:
     clip: {fileID: 8300000, guid: 2f6c5897dde10fa40ae7601d70f267af, type: 3}

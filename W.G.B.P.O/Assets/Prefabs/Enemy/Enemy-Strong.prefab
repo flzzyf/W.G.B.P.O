@@ -150,6 +150,8 @@ MonoBehaviour:
   speed: 0.5
   maxHp: 1
   gfx: {fileID: 1113806953370356}
+  generateUnit: {fileID: 114708268906588512, guid: 4b319512f73f3754aa1826b6fac6480a,
+    type: 3}
 --- !u!114 &114227297508899788
 MonoBehaviour:
   m_ObjectHideFlags: 0

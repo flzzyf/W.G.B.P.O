@@ -12,7 +12,10 @@ public class Turret_Bee : Turret
     {
         base.Attack();
 
-        StartCoroutine(BeeAttack());
+		//播放音效
+		SoundManager.instance.PlaySound(sound_Launch);
+
+		StartCoroutine(BeeAttack());
     }
 
     List<GameObject> GetTargets()

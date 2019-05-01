@@ -15,11 +15,20 @@ public class Heart : MonoBehaviour
         spriteRenderer.material.color = ColorManager.instance.GetColor(_color - 1);
     }
 
-    //心碎掉
-    public void Die()
+	//被击中
+	public void Hit()
+	{
+		CameraShake.instance.Shake(.2f, .2f);
+
+	}
+
+	//心碎掉
+	public void Die()
     {
         spriteRenderer.enabled = false;
 
         particle_death.Play();
+
+		CameraShake.instance.Shake(.5f, .3f);
     }
 }

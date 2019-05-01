@@ -16,6 +16,9 @@ public class Unit : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator animator;
 
+	//死亡后生成的单位
+	public Unit generateUnit;
+
     private void Start()
     {
         currentHp = maxHp;
@@ -75,6 +78,13 @@ public class Unit : MonoBehaviour
         //播放死亡特效
         GameObject deathFx = Instantiate(GameManager.instance.colorParticle, transform.position, Quaternion.identity);
         Destroy(deathFx, 1.5f);
+
+		//如果有死亡后生成单位，生成
+		if(generateUnit != null)
+		{
+			Unit unit = Instantiate(generateUnit, transform.position, transform.rotation);
+			unit.maxHp = 5;
+		}
     }
 
     public int GetHp()

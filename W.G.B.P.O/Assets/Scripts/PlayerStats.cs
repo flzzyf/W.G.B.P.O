@@ -25,19 +25,13 @@ public class PlayerStats : MonoBehaviour
     {
         currentHp = maxHp;
 
-        AppearanceModify();
-    }
+		heart.ChangeColor(currentHp);
+	}
 
-    //修改外形
-    public void AppearanceModify()
+	//敌人抵达终点
+	public void EnemyReachTarget(Unit _unit)
     {
-        heart.ChangeColor(currentHp);
-    }
-
-    //敌人抵达终点
-    public void EnemyReachTarget(Unit _unit)
-    {
-        TakeDamage(_unit.GetHp());
+        TakeDamage(1);
 
         SoundManager.instance.PlaySound(GameManager.instance.enemyReachSound);
     }
@@ -57,9 +51,11 @@ public class PlayerStats : MonoBehaviour
             }
             else
             {
-                AppearanceModify();
-            }
-        }
+				heart.ChangeColor(currentHp);
+
+				heart.Hit();
+			}
+		}
     }
 
     void Death()

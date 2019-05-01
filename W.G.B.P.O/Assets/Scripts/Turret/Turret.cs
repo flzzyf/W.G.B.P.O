@@ -11,7 +11,7 @@ public class Turret : MonoBehaviour
 
     public GameObject reloadPicture;
 
-    Animator animator;
+    protected Animator animator;
 
     #region 回合造成伤害
     protected int roundDamage = 0;
@@ -56,13 +56,13 @@ public class Turret : MonoBehaviour
         {
             fireCountdown -= Time.deltaTime;
 
-            Vector3 scale = new Vector3(1, fireCountdown / fireRate, 1);
-            reloadPicture.transform.localScale = scale;
+            //Vector3 scale = new Vector3(1, fireCountdown / fireRate, 1);
+            //reloadPicture.transform.localScale = scale;
         }
         else
         {
             //冷却完成状态
-            animator.SetBool("Reloading", false);
+            //animator.SetBool("Reloading", false);
 
             //拖动中无法攻击
             if (dragingNoAttacking)
@@ -90,10 +90,9 @@ public class Turret : MonoBehaviour
 
     public virtual void Attack()
     {
-        //播放音效
-        SoundManager.instance.PlaySound(sound_Launch);
 
-        animator.SetBool("Reloading", true);
+
+        //animator.SetBool("Reloading", true);
 
         fireCountdown = fireRate;
 
@@ -104,44 +103,44 @@ public class Turret : MonoBehaviour
         return fireCountdown <= 0;
     }
 
-    //鼠标按下
-    private void OnMouseDown()
-    {
-        GameManager.instance.draging = true;
+	//鼠标按下
+	private void OnMouseDown()
+	{
+		GameManager.instance.draging = true;
 
-        GameManager.instance.dragingTurret = gameObject;
+		GameManager.instance.dragingTurret = gameObject;
 
-        dragOffset = GetMousePos() - transform.position;
-        dragOffset.z = 0;
+		dragOffset = GetMousePos() - transform.position;
+		dragOffset.z = 0;
 
-        //手机版点击显示范围
+		//手机版点击显示范围
 #if UNITY_IPHONE || UNITY_ANDROID
         rangeDisplay.SetActive(true);
 #endif
 
-    }
-    //鼠标起来
-    private void OnMouseUp()
-    {
-        GameManager.instance.draging = false;
+	}
+	//鼠标起来
+	private void OnMouseUp()
+	{
+		GameManager.instance.draging = false;
 
-        if (!dragingNoAttacking)
-        {
-            //可攻击
-            if (canAttack())
-                Attack();
-        }
+		if (!dragingNoAttacking)
+		{
+			//可攻击
+			if (canAttack())
+				Attack();
+		}
 
-        dragingNoAttacking = false;
+		dragingNoAttacking = false;
 
-        gameObject.layer = defaultLayer;
+		gameObject.layer = defaultLayer;
 
-        transform.position = transform.parent.position + Vector3.back;
+		transform.position = transform.parent.position + Vector3.back;
 
-        rangeDisplay.SetActive(false);
-    }
-    //鼠标拖动
-    private void OnMouseDrag()
+		rangeDisplay.SetActive(false);
+	}
+	//鼠标拖动
+	private void OnMouseDrag()
     {
         Vector3 pos = GetMousePos() - dragOffset;
         transform.position = pos;
@@ -174,9 +173,9 @@ public class Turret : MonoBehaviour
         rangeDisplay.SetActive(true);
     }
 
-    void OnMouseExit()
-    {
-        if (!GameManager.instance.draging)
-            rangeDisplay.SetActive(false);
-    }
+	void OnMouseExit()
+	{
+		if (!GameManager.instance.draging)
+			rangeDisplay.SetActive(false);
+	}
 }

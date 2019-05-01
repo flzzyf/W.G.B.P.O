@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 4144404083082424}
   - component: {fileID: 212349487159564520}
   - component: {fileID: 95766301821780782}
+  - component: {fileID: 9078007742112869295}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -179,6 +180,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9078007742112869295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243056306977028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74baee241de336a4a8a931da0686fa69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animEvent:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114893842483000154}
+        m_MethodName: NukeAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1264687629150226
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 1.8
-  fireRate: 4
+  fireRate: 1.5
   reloadPicture: {fileID: 1264687629150226}
   sound_Launch:
     clip: {fileID: 8300000, guid: 2f6c5897dde10fa40ae7601d70f267af, type: 3}
@@ -314,7 +343,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2
   gfx: {fileID: 1243056306977028}
-  force: 4
+  force: 3
   rangeDisplay: {fileID: 5925637516444806501}
   effect_Launch: {fileID: 1986656991180130, guid: 51367a2fedd10eb46a6920c7a9d44156,
     type: 3}
