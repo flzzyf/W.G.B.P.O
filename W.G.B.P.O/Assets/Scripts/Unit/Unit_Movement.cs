@@ -24,31 +24,20 @@ public class Unit_Movement : MonoBehaviour
         if (!GameManager.instance.gaming)
             return;
 
-<<<<<<< HEAD
         //朝下个点方向
         Vector3 dir = targetWayPoint - transform.position;
-=======
-	void Update ()
-	{
-		//朝下个点移动
-		Vector3 dir = targetWayPoint - transform.position;
-
->>>>>>> parent of cad6da5... qwe
         //移动
         //GetComponent<Rigidbody2D>().MovePosition(transform.position +  dir.normalized * unit.speed * Time.deltaTime);
         transform.Translate(dir.normalized * unit.speed * Time.deltaTime, Space.World);
-
         //旋转
         if (dir != Vector3.zero)
         {
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
-
+            //旋转
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotSpeed * Time.deltaTime);
-
         }
         //抵达
-<<<<<<< HEAD
         //距离下个点很近，或者和下个点的方向与下个点到下下个点方向差别过大
         //if (dir.magnitude <= unit.speed * Time.deltaTime || 
         //    Vector2.Angle(dir, WayPointManager.wayPoints[currentWayPointIndex + 1].position - WayPointManager.wayPoints[currentWayPointIndex].position) > 100)
@@ -56,14 +45,6 @@ public class Unit_Movement : MonoBehaviour
         {
             ReachTarget();
         }
-=======
-        if (dir.magnitude <= unit.speed * Time.deltaTime)
-		{
-			ReachTarget();
-		}
-        
-
->>>>>>> parent of cad6da5... qwe
     }
 
     //获取下个路径点
